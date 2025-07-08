@@ -6,10 +6,7 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.29-stable" }.freeze
 gem "decidim", DECIDIM_VERSION
-# gem "decidim-conferences", "0.29.4"
-# gem "decidim-design", "0.29.4"
-# gem "decidim-initiatives", "0.29.4"
-# gem "decidim-templates", "0.29.4"
+gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer"
 
 gem "bootsnap", "~> 1.3"
 
