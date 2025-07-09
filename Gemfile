@@ -9,8 +9,10 @@ gem "decidim", DECIDIM_VERSION
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer"
 
 gem "bootsnap", "~> 1.3"
-
+gem "health_check"
 gem "puma", ">= 6.3.1"
+gem "sentry-rails"
+gem "sentry-ruby"
 
 gem "wicked_pdf", "~> 2.1"
 

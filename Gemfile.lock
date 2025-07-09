@@ -412,6 +412,8 @@ GEM
       html-pipeline (~> 2.14, >= 2.14.3)
     hashdiff (1.1.0)
     hashie (5.0.0)
+    health_check (3.1.0)
+      railties (>= 5.0)
     highline (3.0.1)
     html-pipeline (2.14.3)
       activesupport (>= 2)
@@ -715,6 +717,12 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    sentry-rails (5.26.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.26.0)
+    sentry-ruby (5.26.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     shakapacker (7.1.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
@@ -806,12 +814,15 @@ DEPENDENCIES
   decidim!
   decidim-dev (= 0.29.4)
   decidim-term_customizer!
+  health_check
   letter_opener_web (~> 2.0)
   listen (~> 3.1)
   net-imap (~> 0.2.3)
   net-pop (~> 0.1.1)
   net-smtp (~> 0.3.1)
   puma (>= 6.3.1)
+  sentry-rails
+  sentry-ruby
   sidekiq
   web-console (~> 4.2)
   wicked_pdf (~> 2.1)
