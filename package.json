@@ -16,7 +16,9 @@
     "@decidim/dev": "file:packages/dev",
     "@decidim/eslint-config": "file:packages/eslint-config",
     "@decidim/prettier-config": "file:packages/prettier-config",
-    "@decidim/stylelint-config": "file:packages/stylelint-config"
+    "@decidim/stylelint-config": "file:packages/stylelint-config",
+    "postcss-scss": "^4.0.9",
+    "sass-embedded": "~1.57.1"
   },
   "browserslist": [
     "extends @decidim/browserslist-config"
