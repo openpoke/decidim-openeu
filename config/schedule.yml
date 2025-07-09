@@ -62,4 +62,3 @@ weekly_notifications_digest_job:
   args:
     task: decidim:mailers:notifications_digest_weekly
 
-
