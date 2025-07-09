@@ -380,7 +380,7 @@ Decidim.configure do |config|
 
   # Defines additional content security policies following the structure
   # Read more: https://docs.decidim.org/en/develop/configure/initializer#_content_security_policy
-  config.content_security_policies_extra = {}
+  # config.content_security_policies_extra = {}
 
   # Admin admin password configurations
   Rails.application.secrets.dig(:decidim, :admin_password, :strong).tap do |strong_pw|
