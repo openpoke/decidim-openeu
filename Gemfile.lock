@@ -189,6 +189,9 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
+    cronex (0.15.0)
+      tzinfo
+      unicode (>= 0.4.4.5)
     css_parser (1.16.0)
       addressable
     dartsass (1.49.8)
@@ -386,6 +389,8 @@ GEM
       temple
     erubi (1.13.0)
     escape_utils (1.2.2)
+    et-orbi (1.2.11)
+      tzinfo
     excon (0.109.0)
     extended-markdown-filter (0.7.0)
       html-pipeline (~> 2.9)
@@ -417,6 +422,9 @@ GEM
       activemodel (>= 4.1, < 7.1)
       activesupport (>= 4.1, < 7.1)
       railties (>= 4.1, < 7.1)
+    fugit (1.11.1)
+      et-orbi (~> 1, >= 1.2.11)
+      raabro (~> 1.4)
     gemoji (3.0.1)
     geocoder (1.8.2)
     globalid (1.2.1)
@@ -432,6 +440,8 @@ GEM
       html-pipeline (~> 2.14, >= 2.14.3)
     hashdiff (1.1.0)
     hashie (5.0.0)
+    health_check (3.1.0)
+      railties (>= 5.0)
     highline (3.0.1)
     html-pipeline (2.14.3)
       activesupport (>= 2)
@@ -588,6 +598,7 @@ GEM
     public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.8.0)
     rack (2.2.9)
     rack-attack (6.7.0)
@@ -738,6 +749,12 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    sentry-rails (5.26.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.26.0)
+    sentry-ruby (5.26.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     shakapacker (7.1.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
@@ -749,6 +766,11 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
+    sidekiq-cron (2.3.0)
+      cronex (>= 0.13.0)
+      fugit (~> 1.8, >= 1.11.1)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6.5.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -777,6 +799,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
+    unicode (0.4.4.5)
     unicode-display_width (2.5.0)
     uniform_notifier (1.16.0)
     uri (0.13.0)
@@ -830,15 +853,14 @@ DEPENDENCIES
   decidim-decidim_awesome!
   decidim-dev (= 0.29.4)
   decidim-term_customizer!
-  letter_opener_web (~> 2.0)
-  listen (~> 3.1)
-  net-imap (~> 0.2.3)
-  net-pop (~> 0.1.1)
-  net-smtp (~> 0.3.1)
+  health_check
+  letter_opener_web
   puma (>= 6.3.1)
+  sentry-rails
+  sentry-ruby
   sidekiq
+  sidekiq-cron
   web-console (~> 4.2)
-  wicked_pdf (~> 2.1)
 
 RUBY VERSION
    ruby 3.2.2p53
