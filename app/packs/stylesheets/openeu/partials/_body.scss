@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'WorkSans-Medium';
+  src: 
+    url('fonts/WorkSans-Medium.woff2') format('woff2'),
+    url('fonts/WorkSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'WorkSans-Light';
+  src: 
+    url('fonts/WorkSans-Light.woff2') format('woff2'),
+    url('fonts/WorkSans-Light.ttf') format('truetype');
+}
+
+body {
+  font-family: 'WorkSans-Light', sans-serif;
+}
+
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: 'WorkSans-Light', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: inherit;
+}
+
+b,
+strong {
+  font-family: 'WorkSans-Medium', sans-serif;
+}
