@@ -1,0 +1,45 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  RUBY_VERSION: 3.2.8
+  NODE_VERSION: 18.17.1
+    
+jobs:
+  lint:
+    name: Lint code
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.head_ref, 'chore/l10n')"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install JS dependencies
+        run: npm ci
+
+      - name: Lint Ruby files
+        run: bundle exec rubocop -P
+
+      - name: Lint JavaScript files
+        run: npm run eslint
+
+      - name: Lint CSS files
+        run: npm run stylelint
+
+      - name: Lint Markdown files
+        run: npm run markdownlint
