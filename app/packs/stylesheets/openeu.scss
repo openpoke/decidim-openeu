@@ -101,12 +101,17 @@ main {
     
   }
 
+  section[id^='hero-'] {
+    h1, h2 {
+      width: unset;
+    }
+  }
+
   h1, h2 {
     &.decorator:after, &::after {
       content: none !important;
     }
 
-    width: 100%;
     border-bottom: var(--border-width) solid #000;
     border-left: var(--border-width) solid #000;
     padding: 0 0 var(--box-padding-s) var(--box-padding-s);
@@ -122,6 +127,7 @@ main {
     }
   }
 
+  /*
   section.home__section, section.content-block {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -163,8 +169,9 @@ main {
       background-color: var(--pink) !important;
     }
   }
+  */
 
-  a.button {
+  a.button:not(.button__sm) {
     background-color: var(--gray);
     border-radius: 25px;
     color: black !important;
