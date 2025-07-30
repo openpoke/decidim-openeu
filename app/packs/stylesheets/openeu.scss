@@ -65,8 +65,6 @@ main {
     .tag {
       background-color: #fff;
       border: 2px solid #000;
-      font-size: 16px;
-      font-weight: 300;
       min-height: 32px;
       border-radius: 16px;
       padding: 4px 12px;
@@ -75,27 +73,35 @@ main {
 
     .card__grid-numbers {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       grid-gap: 6rem;
 
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     article {
       @include keyframe;
 
-      &:nth-of-type(2n) {
-        transform: translate(0,50%);
+      @media (min-width: 768px) {
+
+        &:nth-of-type(2n) {
+          transform: translate(0,50%);
+        }
       }
 
       p {
         // @apply text-4xl
+        /**
         font-size: 34px;
-        line-height: calc(2.5 / 2.25); /* 1 */
+        line-height: calc(2.5 / 2.25); 
+        */
       }
 
       p.amount {
         // @apply text-6xl
-        font-size: 60px;
+        font-size: 34px;
         line-height: 1;
       }
 
