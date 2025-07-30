@@ -24,24 +24,6 @@ header {
   #sticky-header-container {
     background-color: var(--blue) !important;
   }
-
-  /**
-  .main-bar__links-desktop {
-    button, a {
-      border-bottom: var(--border-width) solid #000;
-      border-left: var(--border-width) solid #000;
-      padding: 0 0 var(--box-padding-xs) var(--box-padding-xs);
-
-      &:hover {
-        background-color: var(--darker-gray) !important;
-      }
-    }
-
-    div {
-      border-left: none !important;
-    }
-  }
-  */
 }
 
 aside {
@@ -85,7 +67,6 @@ main {
       @include keyframe;
 
       @media (min-width: 768px) {
-
         &:nth-of-type(2n) {
           transform: translate(0,50%);
         }
@@ -136,16 +117,6 @@ main {
     @include keyframe;
   }
 
-  section.home__menu {
-    .home__menu-element {
-      margin-right: 2rem;
-
-      &::before, &::after {
-        content: none !important;
-      }
-    }
-  }
-
   /*
   section.home__section, section.content-block {
     margin-left: 0 !important;
@@ -190,7 +161,7 @@ main {
   }
   */
 
-  a.button:not(.button__sm) {
+  a.button:not(.button__text-secondary):not(.home__menu-element--link) {
     background-color: var(--gray);
     border-radius: 25px;
     color: black !important;
