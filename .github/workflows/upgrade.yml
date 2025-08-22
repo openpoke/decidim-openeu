@@ -10,6 +10,6 @@ jobs:
 
     steps:
       - name: Upgrade instance dependencies
-        uses: openpoke/decidim-shared-actions/upgrade_instance/action.yml
+        uses: openpoke/decidim-shared-actions/upgrade_instance@main
         with:
           ruby-version: "3.2.8"
