@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: b4c50032542f7295163645b04f494fd00f8c87bb
+  revision: 99eb7abb08a335dc7c16f8dabeab027b01d681c2
   branch: main
   specs:
-    decidim-decidim_awesome (0.12.3)
+    decidim-decidim_awesome (0.12.4)
       active_hashcash (~> 0.4.0)
       decidim-admin (>= 0.29.1, < 0.30)
       decidim-core (>= 0.29.1, < 0.30)
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 330532361b51077e23add4adf80c7c956f66b0dd
+  revision: a5d9c1ea3ec7ad802346c9f2ec2c2a07e2fd44b1
   branch: release/0.29-stable
   specs:
     decidim (0.29.4)
@@ -154,7 +154,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.10.3)
       msgpack (~> 1.2)
-    brakeman (6.1.0)
+    brakeman (6.1.2)
+      racc
     browser (2.7.1)
     builder (3.3.0)
     bullet (7.1.6)
@@ -596,7 +597,7 @@ GEM
     psych (4.0.6)
       stringio
     public_suffix (5.0.4)
-    puma (6.4.2)
+    puma (6.4.3)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.0)
@@ -772,7 +773,7 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
-    sidekiq-cron (2.3.0)
+    sidekiq-cron (2.3.1)
       cronex (>= 0.13.0)
       fugit (~> 1.8, >= 1.11.1)
       globalid (>= 1.0.1)
@@ -823,7 +824,7 @@ GEM
       rexml (~> 3.2)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.2.0)
+    web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
@@ -871,7 +872,7 @@ DEPENDENCIES
   web-console (~> 4.2)
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.2.8p263
 
 BUNDLED WITH
    2.4.6
