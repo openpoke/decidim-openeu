@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.2.8
+  RUBY_VERSION: 3.3
   NODE_VERSION: 18.17.1
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:16
+        image: postgres:17
         ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready
@@ -36,7 +36,7 @@ jobs:
         ports: ["6379:6379"]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
