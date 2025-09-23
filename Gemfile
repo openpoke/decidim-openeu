@@ -4,10 +4,10 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.29-stable" }.freeze
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.30-stable" }.freeze
 gem "decidim", DECIDIM_VERSION
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
-gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer"
+gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
 gem "bootsnap", "~> 1.3"
 gem "deface"
@@ -22,13 +22,13 @@ gem "aws-sdk-s3"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
-  gem "brakeman", "~> 6.1"
-  gem "decidim-dev", "0.29.4"
+  gem "brakeman"
+  gem "decidim-dev", DECIDIM_VERSION
 end
 
 group :development do
   gem "letter_opener_web"
-  gem "web-console", "~> 4.2"
+  gem "web-console"
 end
 
 group :production do
