@@ -1,0 +1,16 @@
+name: "Run brakeman"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  upgrade-dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run brakeman
+        uses: openpoke/decidim-shared-actions/run_brakeman@main
+        with:
+          ruby-version: "3.3"
