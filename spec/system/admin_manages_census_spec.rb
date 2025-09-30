@@ -7,7 +7,7 @@ describe "Admin" do
     let!(:organization) { create(:organization, available_authorizations:) }
     let!(:admin) { create(:user, :admin, :confirmed, organization:) }
     let(:available_authorizations) { %w(id_documents postal_letter csv_census dummy_authorization_handler another_dummy_authorization_handler sms) }
-    let(:test_user) { create(:user, :confirmed, email: "user@example.org", organization:) }
+    let(:test_user) { create(:user, :confirmed, email: "user@example.org", password: "decidim123456789", organization:) }
 
     before do
       switch_to_host(organization.host)
@@ -55,22 +55,30 @@ describe "Admin" do
         before do
           attach_file "File", Rails.root.join("lib/assets/valid_emails.csv")
           click_on "Upload file"
+          visit decidim.root_path
+          find("#trigger-dropdown-account").click
+          within ".dropdown.dropdown__bottom.main-bar__dropdown" do
+            click_on "Log out"
+          end
         end
 
         context "when the email exists in the census" do
-            it "authorizes the user" do
-              
-              login_as test_user, scope: :user
-              visit decidim.root_path
+          let(:last_authorization) { Decidim::Authorization.last }
 
-              expect(
-                Decidim::Authorization.exists?(
-                  user: test_user,
-                  name: "csv_census",
-                  granted_at: ..Time.current
-                )
-              ).to be true
+          it "authorizes the user" do
+            within ".main-bar" do
+              click_on "Log in"
             end
+            fill_in "Email address", with: test_user.email
+            fill_in "Password", with: test_user.password
+            within ".form__wrapper-block" do
+              click_on "Log in"
+            end
+
+            expect(last_authorization.user).to eq(test_user)
+            expect(last_authorization.name).to eq("csv_census")
+            expect(last_authorization).to be_granted
+          end
         end
       end
     end
