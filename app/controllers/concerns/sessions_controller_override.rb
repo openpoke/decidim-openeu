@@ -1,20 +1,23 @@
 # frozen_string_literal: true
 
 module SessionsControllerOverride
-  def create
-    super do |user|
-      verify_users_after_sign_in(user)
-    end
+  extend ActiveSupport::Concern
+
+  included do
+    after_action :csv_auto_verify, only: :create
   end
 
-  private
+  def csv_auto_verify
+    return unless current_user.organization.available_authorizations.include?("csv_census")
 
-  def verify_users_after_sign_in(user)
-    record = Decidim::Verifications::CsvDatum.find_or_create_by(email: user.email, organization: user.organization)
+    record = Decidim::Verifications::CsvDatum.find_or_create_by(
+      email: current_user.email,
+      organization: current_user.organization
+    )
     return unless record
 
     authorization = Decidim::Authorization.find_or_initialize_by(
-      user:,
+      user: current_user,
       name: "csv_census"
     )
 
