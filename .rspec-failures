@@ -1,6 +1,6 @@
 example_id                                              | status | run_time     |
 ------------------------------------------------------- | ------ | ------------ |
-./spec/system/admin_manages_census_spec.rb[1:1:1:1]     | passed | 2.97 seconds |
-./spec/system/admin_manages_census_spec.rb[1:1:2:1]     | passed | 3.2 seconds  |
-./spec/system/admin_manages_census_spec.rb[1:1:2:2]     | passed | 3.87 seconds |
-./spec/system/admin_manages_census_spec.rb[1:1:2:3:1:1] | failed | 3.7 seconds  |
+./spec/system/admin_manages_census_spec.rb[1:1:1:1]     | passed | 1.33 seconds |
+./spec/system/admin_manages_census_spec.rb[1:1:2:1]     | passed | 3.1 seconds  |
+./spec/system/admin_manages_census_spec.rb[1:1:2:2]     | passed | 1.88 seconds |
+./spec/system/admin_manages_census_spec.rb[1:1:2:3:1:1] | failed | 3.91 seconds |

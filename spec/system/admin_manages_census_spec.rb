@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+
 describe "Admin" do
   context "when admin manages census authorizations" do
     let!(:organization) { create(:organization, available_authorizations:) }
@@ -57,6 +58,19 @@ describe "Admin" do
         end
 
         context "when the email exists in the census" do
+            it "authorizes the user" do
+              
+              login_as test_user, scope: :user
+              visit decidim.root_path
+
+              expect(
+                Decidim::Authorization.exists?(
+                  user: test_user,
+                  name: "csv_census",
+                  granted_at: ..Time.current
+                )
+              ).to be true
+            end
         end
       end
     end
