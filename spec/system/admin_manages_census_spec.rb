@@ -56,7 +56,7 @@ describe "Admin" do
           attach_file "File", Rails.root.join("lib/assets/valid_emails.csv")
           click_on "Upload file"
           visit decidim.root_path
-          find("#trigger-dropdown-account").click
+          find_by_id("trigger-dropdown-account").click
           within ".dropdown.dropdown__bottom.main-bar__dropdown" do
             click_on "Log out"
           end
@@ -78,6 +78,25 @@ describe "Admin" do
             expect(last_authorization.user).to eq(test_user)
             expect(last_authorization.name).to eq("csv_census")
             expect(last_authorization).to be_granted
+          end
+        end
+
+        context "when the email does not exist in the census" do
+          let(:another_user) { create(:user, :confirmed, email: "email_not_registered@example.org", password: "decidim123456789", organization:) }
+          let(:last_authorization) { Decidim::Authorization.last }
+
+          it "does not authorize the user" do
+            within ".main-bar" do
+              click_on "Log in"
+            end
+            fill_in "Email address", with: another_user.email
+            fill_in "Password", with: another_user.password
+            within ".form__wrapper-block" do
+              click_on "Log in"
+            end
+
+            expect(last_authorization).to be_nil
+            expect(page).to have_content("Logged in successfully.")
           end
         end
       end
