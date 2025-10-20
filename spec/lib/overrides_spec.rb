@@ -11,7 +11,8 @@ checksums = [
     files: {
       "/app/controllers/decidim/meetings/meetings_controller.rb" => "deb84fa4e285297a6d3e0d60490a84eb",
       "/app/cells/decidim/meetings/dates_and_map_cell.rb" => "63d62a274af8f60b3fcbe27d99019ad3",
-      "/app/cells/decidim/meetings/dates_and_map/show.erb" => "43f0d53b01ab6775132856ca84c4d907"
+      "/app/cells/decidim/meetings/dates_and_map/show.erb" => "43f0d53b01ab6775132856ca84c4d907",
+      "/app/views/decidim/meetings/meetings/_meeting.html.erb" => "38346a6eb237727f469d96aaa64f7503"
     }
   }
 ]
