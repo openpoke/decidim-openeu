@@ -3,11 +3,8 @@
 module MeetingPrivateDataHelper
   def private_data_allowed?(meeting)
     return true if current_user&.admin?
+    return true if meeting.permissions&.dig("view_private_data").blank?
 
-    required_handlers = meeting.permissions&.dig("view_private_data", "authorization_handlers")
-    return true if required_handlers.blank?
-    return false unless current_user
-
-    Decidim::Authorization.where(user: current_user, name: required_handlers.keys).any?(&:granted?)
+    Decidim::ActionAuthorizer.new(current_user, "view_private_data", meeting.component, meeting).authorize.ok?
   end
 end
