@@ -18,6 +18,7 @@
 require "factory_bot_rails"
 
 require "decidim/core/test/factories"
+require "decidim/meetings/test/factories"
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods

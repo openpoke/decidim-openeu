@@ -1,0 +1,3 @@
+<!-- replace 'erb:contains("unless meeting.in_person? || meeting.withdrawn?")' -->
+
+<% if !meeting.in_person? && !meeting.withdrawn? && private_data_allowed?(meeting) %>
