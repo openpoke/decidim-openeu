@@ -40,12 +40,14 @@
 .envrc
 .rbenv-vars
 mise.toml
+*.sql
+.byebug*
 
 # Ignore the files and folders generated through Webpack
 /public/decidim-packs
 /public/packs-test
-/public/sw.js
-/public/sw.js.map
+/public/sw.js*
+/public/sw.js.map*
 
 # Ignore node modules
 /node_modules

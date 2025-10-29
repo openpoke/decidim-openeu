@@ -1,13 +1,33 @@
 ---
 en:
+  activemodel:
+    attributes:
+      authorization_handler:
+        wp: Work package number
   decidim:
     components:
       meetings:
         actions:
           view_private_data: View private meeting details (venue, url, minutes and
             attachments)
+    authorization_handlers:
+      admin:
+        wp_authorization_handler:
+          help:
+          - This handler checks if the user has the necessary permissions to access
+            or modify content based on the associated work package.
+      wp_authorization_handler:
+        explanation: Admin verification based on work package permissions.
+        fields:
+          wp: Work package number
+        name: Work package authorization
     content_blocks:
       partner_logos:
         associated_partners: Associated partners
         members: Members
         name: Partner logos
+  openeu:
+    verifications:
+      admins_only: This verification method is issued only by administrators. Please
+        contact an administrator if you believe you should have access.
+      non_admin: Only administrators can authorize users.

@@ -1,0 +1,16 @@
+<div class="callout warning">
+  <p><%= t("openeu.verifications.admins_only") %></p>
+</div>
+<div class="form__wrapper mt-0">
+  <%= form.input("handler_name") %>
+  <%= form.input("wp") if controller_name == "admin_authorizations" %>
+  <%= form.input("controller_name", as: :hidden_field, input: { value: controller_name }) %>
+</div>
+
+<% if controller_name != "admin_authorizations" %>
+  <style type="text/css">
+    #new_authorization_handler button {
+      display: none;
+    }
+  </style>
+<% end %>
