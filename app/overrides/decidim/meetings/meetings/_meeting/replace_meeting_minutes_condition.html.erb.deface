@@ -1,0 +1,3 @@
+<!-- replace 'erb:contains("meeting.closed? && meeting.closing_visible?")' -->
+
+<% if meeting.closed? && meeting.closing_visible? && private_data_allowed?(meeting) %>
