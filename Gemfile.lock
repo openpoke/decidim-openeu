@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 8f123084d5d7a56264b4b473b170b09ef2b0c5d4
-  branch: main
+  revision: 6df611f1d8f15de2c9b405d10fb7a523eb7c4502
+  branch: feat/private-components-with-verifications
   specs:
     decidim-decidim_awesome (0.13.1)
       active_hashcash (~> 0.4.0)
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: f528d7b0babeb7d6dcc696f52fc2e80974bbfe2c
+  revision: acccdbdfed3536ca67c8fb578af1868cf6826680
   branch: release/0.30-stable
   specs:
     decidim (0.30.3)
@@ -289,8 +289,8 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1178.0)
-    aws-sdk-core (3.235.0)
+    aws-partitions (1.1179.0)
+    aws-sdk-core (3.236.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -298,7 +298,7 @@ GEM
       bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.115.0)
+    aws-sdk-kms (1.116.0)
       aws-sdk-core (~> 3, >= 3.234.0)
       aws-sigv4 (~> 1.5)
     aws-sdk-s3 (1.202.0)
@@ -570,7 +570,7 @@ GEM
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
     mutex_m (0.3.0)
-    net-http (0.6.0)
+    net-http (0.7.0)
       uri
     net-imap (0.5.12)
       date
@@ -581,7 +581,7 @@ GEM
       timeout
     net-smtp (0.5.1)
       net-protocol
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     nokogiri (1.18.10)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -657,7 +657,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (2.2.20)
+    rack (2.2.21)
     rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-cors (1.1.1)
@@ -745,7 +745,7 @@ GEM
     rspec-html-matchers (0.10.0)
       nokogiri (~> 1)
       rspec (>= 3.0.0.a)
-    rspec-mocks (3.13.6)
+    rspec-mocks (3.13.7)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-rails (6.1.5)
@@ -806,7 +806,7 @@ GEM
       nokogiri (>= 1.10.8)
       rubyzip (>= 1.3.0)
     rubyzip (2.3.2)
-    sass-embedded (1.93.2)
+    sass-embedded (1.93.3)
       google-protobuf (~> 4.31)
       rake (>= 13)
     sassc (2.4.0)
@@ -876,7 +876,7 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
     uniform_notifier (1.18.0)
-    uri (1.0.4)
+    uri (1.1.0)
     valid_email2 (7.0.13)
       activemodel (>= 6.0)
       mail (~> 2.5)
@@ -899,7 +899,7 @@ GEM
     web-push (3.0.2)
       jwt (~> 3.0)
       openssl (~> 3.0)
-    webmock (3.26.0)
+    webmock (3.26.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)

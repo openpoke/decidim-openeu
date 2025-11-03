@@ -5,11 +5,6 @@ en:
       authorization_handler:
         wp: Work package number
   decidim:
-    components:
-      meetings:
-        actions:
-          view_private_data: View private meeting details (venue, url, minutes and
-            attachments)
     authorization_handlers:
       admin:
         wp_authorization_handler:
@@ -21,6 +16,11 @@ en:
         fields:
           wp: Work package number
         name: Work package authorization
+    components:
+      meetings:
+        actions:
+          view_private_data: View private meeting details (venue, url, minutes and
+            attachments)
     content_blocks:
       partner_logos:
         associated_partners: Associated partners
