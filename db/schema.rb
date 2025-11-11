@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_09_23_103390) do
+ActiveRecord::Schema[7.0].define(version: 2025_11_10_112245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -546,6 +546,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_09_23_103390) do
     t.string "participatory_space_type", null: false
     t.boolean "visible", default: true
     t.datetime "deleted_at"
+    t.integer "follows_count", default: 0, null: false
     t.index ["deleted_at"], name: "index_decidim_components_on_deleted_at"
     t.index ["participatory_space_id", "participatory_space_type"], name: "index_decidim_components_on_decidim_participatory_space"
   end
