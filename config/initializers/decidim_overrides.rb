@@ -11,7 +11,6 @@ Rails.application.config.to_prepare do
       query = super
       has_space = !is_a?(Decidim::Component) && respond_to?(:participatory_space) && participatory_space.present? && participatory_space.respond_to?(:followers)
       has_component = respond_to?(:component) && component.present? && component.respond_to?(:followers)
-
       query = query.or(component.followers) if has_component
       query = query.or(participatory_space.followers) if has_space
       has_space || has_component ? query.distinct : query
