@@ -21,5 +21,13 @@ module SessionsControllerOverride
     )
 
     authorization.grant! unless authorization.granted?
+    # also verify wp_authorization_handler
+    if current_user.organization.available_authorizations.include?("wp_authorization_handler")
+      wp_authorization = Decidim::Authorization.find_or_initialize_by(
+        user: current_user,
+        name: "wp_authorization_handler"
+      )
+      wp_authorization.grant! unless wp_authorization.granted?
+    end
   end
 end
