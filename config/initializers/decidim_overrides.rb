@@ -17,4 +17,18 @@ Rails.application.config.to_prepare do
     end
   end
   Decidim::Component.include(Decidim::Followable)
+
+  # To remove when posts are properly ordered by published_at in Decidim
+  Decidim::Blogs::PostsController.class_eval do
+    def posts
+      @posts ||= begin
+        posts = if current_user&.admin?
+                  Decidim::Blogs::Post.where(component: current_component)
+                else
+                  Decidim::Blogs::Post.published.where(component: current_component)
+                end
+        posts.order(published_at: :desc)
+      end
+    end
+  end
 end

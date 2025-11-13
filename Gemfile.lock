@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 49ef2da0706b8fc03a83d9c99170e8549cf37973
-  branch: feat/private-components-with-verifications
+  revision: 886fcde8be4203c42f68f1e243d6b0476904d00d
+  branch: main
   specs:
     decidim-decidim_awesome (0.13.2)
       active_hashcash (~> 0.4.0)
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 8dc00c279f927f99767b55a1d543e01fd408dc8f
+  revision: 0ddea3cd8e0f767a129ba6412f1beeb872840562
   branch: release/0.30-stable
   specs:
     decidim (0.30.3)
