@@ -1,0 +1,7 @@
+<!-- insert_after "li:contains('terms_of_service')" -->
+
+<% if cookies_page = ENV.fetch("FOOTER_COOKIES_PAGE", nil) %>
+<li>
+  <%= link_to t("layouts.decidim.footer.cookies_policy"), decidim.page_path(cookies_page) %>
+</li>
+<% end %>
