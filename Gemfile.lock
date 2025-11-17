@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 886fcde8be4203c42f68f1e243d6b0476904d00d
+  revision: b264fabc2604b052a8d6bb12f05edd5acfdbb1c1
   branch: main
   specs:
     decidim-decidim_awesome (0.13.2)
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 0ddea3cd8e0f767a129ba6412f1beeb872840562
+  revision: 121221a7e568864b3749b335d016b5dff0178d9a
   branch: release/0.30-stable
   specs:
     decidim (0.30.3)
@@ -289,7 +289,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1181.0)
+    aws-partitions (1.1182.0)
     aws-sdk-core (3.237.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -320,7 +320,7 @@ GEM
       smart_properties
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.18.6)
+    bootsnap (1.19.0)
       msgpack (~> 1.2)
     brakeman (7.1.1)
       racc
@@ -457,7 +457,7 @@ GEM
     geom2d (0.4.1)
     globalid (1.3.0)
       activesupport (>= 6.1)
-    google-protobuf (4.33.0)
+    google-protobuf (4.33.1)
       bigdecimal
       rake (>= 13)
     graphql (2.4.17)
@@ -491,13 +491,14 @@ GEM
     htmlentities (4.3.4)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (1.0.15)
+    i18n-tasks (1.1.0)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
-      highline (>= 2.0.0)
+      highline (>= 3.0.0)
       i18n
       parser (>= 3.2.2.1)
+      prism
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.8, >= 1.8.1)
@@ -570,8 +571,8 @@ GEM
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
     mutex_m (0.3.0)
-    net-http (0.7.0)
-      uri
+    net-http (0.8.0)
+      uri (>= 0.11.1)
     net-imap (0.5.12)
       date
       net-protocol
