@@ -39,6 +39,12 @@ aside {
 }
 
 main {
+  .participatory-space__container {
+    .content-block.participatory-space__content-block {
+      gap: 2rem;
+    }
+  }
+
   section#numbers {
     img {
       height: 150px !important;
@@ -70,14 +76,6 @@ main {
         &:nth-of-type(2n) {
           transform: translate(0,50%);
         }
-      }
-
-      p {
-        // @apply text-4xl
-        /**
-        font-size: 34px;
-        line-height: calc(2.5 / 2.25); 
-        */
       }
 
       p.amount {
@@ -116,50 +114,6 @@ main {
     width: 100%;
     @include keyframe;
   }
-
-  /*
-  section.home__section, section.content-block {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    max-width: 100% !important;
-    padding-top: 100px !important;
-    padding-bottom: 100px !important;
-
-    & > div, & > h2 {
-      margin-left: auto;
-      margin-right: auto;
-      width: 80%;
-    }
-
-    & > a {
-      margin-left: 10%;
-    }
-
-    p, span {
-      color: black !important;
-    }
-
-    &:nth-of-type(5n+0) {
-      background-color: var(--blue) !important;
-    }
-
-    &:nth-of-type(5n+1) {
-      background-color: var(--green) !important;
-    }
-
-    &:nth-of-type(5n+2) {
-      background-color: var(--purple) !important;
-    }
-
-    &:nth-of-type(5n+3) {
-      background-color: var(--gray) !important;
-    }
-
-    &:nth-of-type(5n+4) {
-      background-color: var(--pink) !important;
-    }
-  }
-  */
 
   a.button:not(.button__text-secondary):not(.home__menu-element--link) {
     background-color: var(--gray);
