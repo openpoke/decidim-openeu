@@ -12,7 +12,7 @@ describe "Visit a followable component" do # rubocop:disable RSpec/DescribeClass
     let(:followable) { component }
   end
 
-  context "When following a component with a proposal" do
+  context "when following a component with a proposal" do
     let!(:proposal) { create(:proposal, component:) }
     let(:follower_user) { create(:user, :confirmed, organization:, notifications_sending_frequency: "real_time") }
     let(:last_follow) { Decidim::Follow.last }
