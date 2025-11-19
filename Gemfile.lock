@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: b264fabc2604b052a8d6bb12f05edd5acfdbb1c1
+  revision: f3c442c531459e8458af7ed52bcd75bf1235b23b
   branch: main
   specs:
     decidim-decidim_awesome (0.13.2)
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 121221a7e568864b3749b335d016b5dff0178d9a
+  revision: 178387f8406b3f21fbe2c51db2d36ad343149c3c
   branch: release/0.30-stable
   specs:
     decidim (0.30.3)
@@ -289,7 +289,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1182.0)
+    aws-partitions (1.1184.0)
     aws-sdk-core (3.237.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -488,7 +488,7 @@ GEM
     html-pipeline (2.14.3)
       activesupport (>= 2)
       nokogiri (>= 1.4)
-    htmlentities (4.3.4)
+    htmlentities (4.4.1)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     i18n-tasks (1.1.0)
@@ -566,7 +566,7 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.26.1)
+    minitest (5.26.2)
     msgpack (1.8.0)
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
@@ -808,7 +808,7 @@ GEM
       nokogiri (>= 1.10.8)
       rubyzip (>= 1.3.0)
     rubyzip (2.3.2)
-    sass-embedded (1.94.0)
+    sass-embedded (1.94.1)
       google-protobuf (~> 4.31)
       rake (>= 13)
     sassc (2.4.0)
