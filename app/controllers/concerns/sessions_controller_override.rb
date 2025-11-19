@@ -4,7 +4,9 @@ module SessionsControllerOverride
   extend ActiveSupport::Concern
 
   included do
+    # rubocop:disable Rails/LexicallyScopedActionFilter
     after_action :csv_auto_verify, only: :create
+    # rubocop:enable Rails/LexicallyScopedActionFilter
   end
 
   def csv_auto_verify

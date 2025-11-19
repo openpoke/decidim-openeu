@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Admin manages meeting permissions" do
+describe "Admin manages meeting permissions" do # rubocop:disable RSpec/DescribeClass
   let(:manifest_name) { "meetings" }
   let!(:meeting) do
     create(:meeting,
@@ -96,6 +96,83 @@ describe "Admin manages meeting permissions" do
 
       meeting.reload
       expect(meeting.permissions.dig("view_private_data", "authorization_handlers")).to be_blank
+    end
+  end
+
+  context "when admin creates a new meeting" do
+    let(:authorization_handler) { "csv_census" }
+
+    before do
+      allow(ENV).to receive(:fetch).and_call_original
+      allow(ENV).to receive(:fetch).with("DECIDIM_MEETINGS_PRIVATE_DATA_VERIFIER", nil).and_return(authorization_handler)
+    end
+
+    it "automatically adds view_private_data permission if env variable is set" do
+      click_on "New meeting"
+
+      fill_in_i18n(
+        :meeting_title,
+        "#meeting-title-tabs",
+        en: "My meeting",
+        es: "Mi meeting",
+        ca: "El meu meeting"
+      )
+      fill_in_i18n_editor(
+        :meeting_description,
+        "#meeting-description-tabs",
+        en: "A description",
+        es: "Una descripción",
+        ca: "Una descripció"
+      )
+      select "Online", from: :meeting_type_of_meeting
+      fill_in_datepicker :meeting_start_time_date, with: Time.new.utc.strftime("%d/%m/%Y")
+      fill_in_timepicker :meeting_start_time_time, with: Time.new.utc.strftime("%H:%M")
+      fill_in_datepicker :meeting_end_time_date, with: (Time.new.utc + 2.days).strftime("%d/%m/%Y")
+      fill_in_timepicker :meeting_end_time_time, with: (Time.new.utc + 2.days).strftime("%H:%M")
+      select "Registration disabled", from: :meeting_registration_type
+      click_on "Create"
+
+      expect(page).to have_admin_callout("successfully")
+
+      meeting = Decidim::Meetings::Meeting.last
+      expect(meeting.permissions).to be_present
+      expect(meeting.permissions["view_private_data"]).to be_present
+      expect(meeting.permissions["view_private_data"]["authorization_handlers"]).to have_key("csv_census")
+    end
+
+    context "when env variable is not set" do
+      let(:authorization_handler) { nil }
+
+      it "does not add view_private_data permission" do
+        click_on "New meeting"
+
+        fill_in_i18n(
+          :meeting_title,
+          "#meeting-title-tabs",
+          en: "My meeting",
+          es: "Mi meeting",
+          ca: "El meu meeting"
+        )
+        fill_in_i18n_editor(
+          :meeting_description,
+          "#meeting-description-tabs",
+          en: "A description",
+          es: "Una descripción",
+          ca: "Una descripció"
+        )
+        select "Online", from: :meeting_type_of_meeting
+        fill_in_datepicker :meeting_start_time_date, with: Time.new.utc.strftime("%d/%m/%Y")
+        fill_in_timepicker :meeting_start_time_time, with: Time.new.utc.strftime("%H:%M")
+        fill_in_datepicker :meeting_end_time_date, with: (Time.new.utc + 2.days).strftime("%d/%m/%Y")
+        fill_in_timepicker :meeting_end_time_time, with: (Time.new.utc + 2.days).strftime("%H:%M")
+        select "Registration disabled", from: :meeting_registration_type
+        click_on "Create"
+
+        expect(page).to have_admin_callout("successfully")
+
+        meeting = Decidim::Meetings::Meeting.last
+        expect(meeting.permissions).to be_blank
+      end
     end
   end
 end
