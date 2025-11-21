@@ -11,7 +11,7 @@ describe "User verification on login" do # rubocop:disable RSpec/DescribeClass
   end
 
   it "auto verifies the user if a CSV datum exists with their email" do
-    create(:csv_datum, email: user.email, organization:)
+    create(:csv_datum, email: user.email.upcase, organization:)
 
     visit decidim.new_user_session_path
     fill_in "Email address", with: user.email
@@ -36,7 +36,7 @@ describe "User verification on login" do # rubocop:disable RSpec/DescribeClass
   end
 
   it "verifies the user when a new registration matches a CSV datum" do
-    create(:csv_datum, email: "new_user@example.com", organization: organization)
+    create(:csv_datum, email: "New_User@example.com", organization: organization)
     visit decidim.new_user_registration_path
     fill_in "Your name", with: "New User"
     fill_in "Your email", with: "new_user@example.com"
