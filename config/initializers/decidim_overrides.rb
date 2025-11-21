@@ -2,6 +2,7 @@
 
 Rails.application.config.to_prepare do
   Decidim::Devise::SessionsController.include(SessionsControllerOverride)
+  Decidim::Devise::RegistrationsController.include(SessionsControllerOverride)
   Decidim::Meetings::MeetingsController.include(MeetingsControllerOverride)
   Decidim::Meetings::DatesAndMapCell.include(DatesAndMapCellOverride)
 
