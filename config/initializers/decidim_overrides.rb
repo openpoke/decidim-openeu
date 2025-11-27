@@ -5,6 +5,7 @@ Rails.application.config.to_prepare do
   Decidim::Devise::RegistrationsController.include(SessionsControllerOverride)
   Decidim::Meetings::MeetingsController.include(MeetingsControllerOverride)
   Decidim::Meetings::DatesAndMapCell.include(DatesAndMapCellOverride)
+  Decidim::Meetings::Admin::Permissions.include(MeetingsAdminPermissionsOverride)
 
   # rubocop:disable Metrics/CyclomaticComplexity
   # Override followers to include participatory space and component followers (originally only participatory space)

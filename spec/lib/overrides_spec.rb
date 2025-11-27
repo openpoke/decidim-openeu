@@ -13,7 +13,8 @@ checksums = [
       "/app/commands/decidim/meetings/admin/create_meeting.rb" => "9c768e9b460fe04cae05ca6b3dee0fd8",
       "/app/cells/decidim/meetings/dates_and_map_cell.rb" => "63d62a274af8f60b3fcbe27d99019ad3",
       "/app/cells/decidim/meetings/dates_and_map/show.erb" => "43f0d53b01ab6775132856ca84c4d907",
-      "/app/views/decidim/meetings/meetings/_meeting.html.erb" => "38346a6eb237727f469d96aaa64f7503"
+      "/app/views/decidim/meetings/meetings/_meeting.html.erb" => "38346a6eb237727f469d96aaa64f7503",
+      "/app/permissions/decidim/meetings/admin/permissions.rb" => "62f49175e6cefbf906f831caef5fc0dd"
     }
   }
 ]

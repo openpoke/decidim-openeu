@@ -175,4 +175,33 @@ describe "Admin manages meeting permissions" do # rubocop:disable RSpec/Describe
       end
     end
   end
+
+  context "when admin manages a user created meeting" do
+    let!(:user_meeting) do
+      create(:meeting,
+             :published,
+             component: current_component,
+             author: create(:user, organization: organization),
+             address: "Carrer de la Pau 2, Barcelona",
+             location: { en: "Barcelona City Hall" },
+             location_hints: { en: "Main entrance, 2nd floor" },
+             online_meeting_url: "https://meet.example.org/another-secret-meeting")
+    end
+
+    it "allows admin to set view_private_data permissions" do
+      visit current_path
+
+      expect(page).to have_content(translated_attribute(user_meeting.title))
+
+      within "tr[data-id='#{user_meeting.id}']" do
+        find("a.action-icon--attachment_collections").click
+      end
+      expect(page).to have_link("New attachment folder")
+      click_on "New attachment folder"
+      fill_in_i18n(:attachment_collection_name, "#attachment_collection-name-tabs", en: "My folder")
+      fill_in_i18n(:attachment_collection_description, "#attachment_collection-description-tabs", en: "A description")
+      click_on "Create"
+      expect(page).to have_admin_callout("successfully")
+    end
+  end
 end

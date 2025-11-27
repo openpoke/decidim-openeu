@@ -14,11 +14,7 @@ module SessionsControllerOverride
     return unless user.organization.available_authorizations.include?("csv_census")
 
     # Match CSV emails case-insensitively (Postgres ILIKE)
-    return unless Decidim::Verifications::CsvDatum.where(
-      "email ILIKE ? AND decidim_organization_id = ?",
-      user.email,
-      user.organization.id
-    ).exists?
+    return unless Decidim::Verifications::CsvDatum.exists?(["email ILIKE ? AND decidim_organization_id = ?", user.email, user.organization.id])
 
     authorization = Decidim::Authorization.find_or_initialize_by(
       user: user,
