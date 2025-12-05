@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require_relative "shared/meeting_permissions_examples"
 
 describe "Meeting private data permissions" do # rubocop:disable RSpec/DescribeClass
   include_context "with a component"
@@ -33,17 +34,7 @@ describe "Meeting private data permissions" do # rubocop:disable RSpec/DescribeC
         visit resource_locator(meeting).path
       end
 
-      it "shows all data including address, location, location hints" do
-        expect(page).to have_content(meeting.address)
-        expect(page).to have_content(translated_attribute(meeting.location))
-        expect(page).to have_content(translated_attribute(meeting.location_hints))
-      end
-
-      it "shows attachments tab" do
-        within "#trigger-documents" do
-          expect(page).to have_content("Documents")
-        end
-      end
+      it_behaves_like "shows all info"
     end
 
     context "when user is logged in" do
@@ -54,15 +45,11 @@ describe "Meeting private data permissions" do # rubocop:disable RSpec/DescribeC
         visit resource_locator(meeting).path
       end
 
-      it "shows all data" do
-        expect(page).to have_content(meeting.address)
-        expect(page).to have_content(translated_attribute(meeting.location))
-        expect(page).to have_content(translated_attribute(meeting.location_hints))
-      end
+      it_behaves_like "shows all info"
     end
   end
 
-  context "when permissions are set for view_private_data" do
+  context "when permissions are set in the meeting" do
     before do
       meeting.create_resource_permission(
         permissions: {
@@ -75,121 +62,39 @@ describe "Meeting private data permissions" do # rubocop:disable RSpec/DescribeC
       )
     end
 
-    context "when user is not logged in" do
-      before do
-        visit resource_locator(meeting).path
-      end
+    it_behaves_like "permissions are set"
+  end
 
-      it "does not show address, location, location_hints" do
-        expect(page).to have_no_content(meeting.address)
-        expect(page).to have_no_content(translated_attribute(meeting.location))
-        expect(page).to have_no_content(translated_attribute(meeting.location_hints))
-      end
-
-      it "shows only calendar dates" do
-        expect(page).to have_css(".meeting__calendar-container")
-        expect(page).to have_css(".meeting__calendar-day")
-      end
-
-      it "does not show online meeting URL" do
-        expect(page).to have_no_content(meeting.online_meeting_url)
-      end
-
-      it "does not show attachments tab" do
-        expect(page).to have_no_content("Documents")
-      end
-
-      it "shows public data (title, description)" do
-        expect(page).to have_content(translated_attribute(meeting.title))
-        expect(page).to have_content(strip_tags(translated_attribute(meeting.description)))
-      end
+  context "when permissions are set in the component" do
+    before do
+      component.update!(
+        permissions: {
+          "view_private_data" => {
+            "authorization_handlers" => {
+              "csv_census" => {}
+            }
+          }
+        }
+      )
     end
 
-    context "when user is logged in but does not have authorization" do
-      let(:user) { create(:user, :confirmed, organization:) }
-
-      before do
-        login_as user, scope: :user
-        visit resource_locator(meeting).path
-      end
-
-      it "does not show address, location, location_hints" do
-        expect(page).to have_no_content(meeting.address)
-        expect(page).to have_no_content(translated_attribute(meeting.location))
-        expect(page).to have_no_content(translated_attribute(meeting.location_hints))
-      end
-
-      it "does not show online meeting URL" do
-        expect(page).to have_no_content(meeting.online_meeting_url)
-      end
-
-      it "does not show attachments tab" do
-        expect(page).to have_no_content("Documents")
-      end
-    end
-
-    context "when user has required authorization" do
-      let(:user) { create(:user, :confirmed, organization:) }
-      let!(:authorization) { create(:authorization, :granted, user:, name: "csv_census", organization:) }
-
-      before do
-        login_as user, scope: :user
-        visit resource_locator(meeting).path
-      end
-
-      it "shows address, location, location_hints" do
-        expect(page).to have_content(meeting.address)
-        expect(page).to have_content(translated_attribute(meeting.location))
-        expect(page).to have_content(translated_attribute(meeting.location_hints))
-      end
-
-      it "shows online meeting URL section" do
-        expect(page).to have_content("JOIN MEETING")
-      end
-
-      it "shows attachments tab" do
-        within "#trigger-documents" do
-          expect(page).to have_content("Documents")
-        end
-      end
-    end
-
-    context "when user is admin" do
-      let(:admin) { create(:user, :admin, :confirmed, organization:) }
-
-      before do
-        login_as admin, scope: :user
-        visit resource_locator(meeting).path
-      end
-
-      it "shows all private data regardless of permissions" do
-        expect(page).to have_content(meeting.address)
-        expect(page).to have_content(translated_attribute(meeting.location))
-        expect(page).to have_content(translated_attribute(meeting.location_hints))
-      end
-
-      it "shows attachments tab" do
-        within "#trigger-documents" do
-          expect(page).to have_content("Documents")
-        end
-      end
-    end
+    it_behaves_like "permissions are set"
   end
 
   context "when meeting is closed" do
-    let!(:closed_meeting) do
+    let!(:meeting) do
       create(:meeting,
              :published,
              :closed,
              component:,
              address: "Carrer de la Pau 1, Barcelona",
-             location: { en: "Barcelona City Hall" }, location_hints: { en: "Main entrance, 2nd floor" },
+             location: { en: "Barcelona City Hall" }, location_hints: { en: "Main entrance, 2nd floor" }, online_meeting_url: "https://meet.example.org/secret-meeting",
              closing_report: { en: "Meeting summary and conclusions" }, attendees_count: 10, closing_visible: true)
     end
 
     before do
-      stub_geocoding_coordinates([closed_meeting.latitude, closed_meeting.longitude])
-      closed_meeting.create_resource_permission(
+      stub_geocoding_coordinates([meeting.latitude, meeting.longitude])
+      meeting.create_resource_permission(
         permissions: {
           "view_private_data" => {
             "authorization_handlers" => {
@@ -205,17 +110,14 @@ describe "Meeting private data permissions" do # rubocop:disable RSpec/DescribeC
 
       before do
         login_as user, scope: :user
-        visit resource_locator(closed_meeting).path
+        visit resource_locator(meeting).path
       end
 
       it "does not show minutes (closing report)" do
-        expect(page).to have_no_content(translated_attribute(closed_meeting.closing_report))
+        expect(page).to have_no_content(translated_attribute(meeting.closing_report))
       end
 
-      it "does not show address and attachments" do
-        expect(page).to have_no_content(closed_meeting.address)
-        expect(page).to have_no_content("Documents")
-      end
+      it_behaves_like "hides private info"
     end
 
     context "when user has authorization" do
@@ -224,17 +126,14 @@ describe "Meeting private data permissions" do # rubocop:disable RSpec/DescribeC
 
       before do
         login_as user, scope: :user
-        visit resource_locator(closed_meeting).path
+        visit resource_locator(meeting).path
       end
 
       it "shows minutes (closing report)" do
-        expect(page).to have_content(translated_attribute(closed_meeting.closing_report))
+        expect(page).to have_content(translated_attribute(meeting.closing_report))
       end
 
-      it "shows all private data" do
-        expect(page).to have_content(closed_meeting.address)
-        expect(page).to have_content(translated_attribute(closed_meeting.location))
-      end
+      it_behaves_like "shows all info"
     end
   end
 end
