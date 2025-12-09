@@ -25,6 +25,7 @@ COPY ./packages /app/packages
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config --deployment --local without 'development test' && \
     bundle install -j4 --retry 3 && \
+    npm install yarn -g && \
     # Remove unneeded gems
     bundle clean --force && \
     # Remove unneeded files from installed gems (cache, *.o, *.c)
@@ -38,7 +39,6 @@ RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xa
     find /usr/local/bundle/ -wholename "*/decidim-dev/lib/decidim/dev/assets/*" -exec rm -rf {} +
 
 RUN npm ci
-RUN "bundle exec rake decidim_api:generate_docs"
 
 # copy the rest of files
 COPY ./app /app/app
@@ -73,7 +73,7 @@ RUN RAILS_ENV=production \
 RUN mv config/credentials.yml.enc.bak config/credentials.yml.enc 2>/dev/null || true
 RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 
-RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
+RUN rm -rf node_modules packages/*/node_modules tmp/cache vendor/bundle test spec app/packs .git
 
 # This image is for production env only
 FROM ruby:3.3-slim AS final
