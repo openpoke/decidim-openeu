@@ -194,6 +194,21 @@ GIT
       decidim-core (= 0.30.4)
 
 GIT
+  remote: https://github.com/openpoke/decidim-module-pokecode.git
+  revision: 0aee34971c8f46b8176d5149a09b5211f7906eb0
+  branch: main
+  specs:
+    decidim-pokecode (0.1.0)
+      decidim-core (>= 0.30.0, < 0.31)
+      deface (>= 1.5)
+      health_check
+      rails_semantic_logger
+      sentry-rails
+      sentry-ruby
+      sidekiq
+      sidekiq-cron
+
+GIT
   remote: https://github.com/openpoke/decidim-module-term_customizer.git
   revision: 00d55ec218e84e5bced560b3b4253f06c9e8104b
   branch: release/0.30-stable
@@ -264,6 +279,8 @@ GEM
     activerecord (7.0.10)
       activemodel (= 7.0.10)
       activesupport (= 7.0.10)
+    activerecord-nulldb-adapter (1.2.2)
+      activerecord (>= 6.1, < 8.2)
     activestorage (7.0.10)
       actionpack (= 7.0.10)
       activejob (= 7.0.10)
@@ -921,6 +938,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-nulldb-adapter (~> 1.2)
   aws-sdk-s3
   bootsnap (~> 1.3)
   brakeman
@@ -928,16 +946,10 @@ DEPENDENCIES
   decidim!
   decidim-decidim_awesome!
   decidim-dev!
+  decidim-pokecode!
   decidim-term_customizer!
-  deface
-  health_check
   letter_opener_web
   puma (>= 6.3.1)
-  rails_semantic_logger
-  sentry-rails
-  sentry-ruby
-  sidekiq
-  sidekiq-cron
   web-console
 
 RUBY VERSION
