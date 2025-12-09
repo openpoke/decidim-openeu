@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 3fb1156857ec8526904897e4161209eae1730c1d
+  revision: 0d0a313b473aca0d328d2f111be21729d42515fc
   branch: release/0.30-stable
   specs:
     decidim (0.30.4)
@@ -71,6 +71,7 @@ GIT
       charlock_holmes (~> 0.7)
       chartkick (~> 5.1.2)
       concurrent-ruby (= 1.3.4)
+      connection_pool (< 3)
       date_validator (~> 0.12.0)
       devise (~> 4.7)
       devise-i18n (~> 1.2)
@@ -193,6 +194,21 @@ GIT
       decidim-core (= 0.30.4)
 
 GIT
+  remote: https://github.com/openpoke/decidim-module-pokecode.git
+  revision: 0aee34971c8f46b8176d5149a09b5211f7906eb0
+  branch: main
+  specs:
+    decidim-pokecode (0.1.0)
+      decidim-core (>= 0.30.0, < 0.31)
+      deface (>= 1.5)
+      health_check
+      rails_semantic_logger
+      sentry-rails
+      sentry-ruby
+      sidekiq
+      sidekiq-cron
+
+GIT
   remote: https://github.com/openpoke/decidim-module-term_customizer.git
   revision: 00d55ec218e84e5bced560b3b4253f06c9e8104b
   branch: release/0.30-stable
@@ -263,6 +279,8 @@ GEM
     activerecord (7.0.10)
       activemodel (= 7.0.10)
       activesupport (= 7.0.10)
+    activerecord-nulldb-adapter (1.2.2)
+      activerecord (>= 6.1, < 8.2)
     activestorage (7.0.10)
       actionpack (= 7.0.10)
       activejob (= 7.0.10)
@@ -289,7 +307,7 @@ GEM
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1190.0)
+    aws-partitions (1.1191.0)
     aws-sdk-core (3.239.2)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -357,7 +375,7 @@ GEM
     cmdparse (3.0.7)
     commonmarker (0.23.12)
     concurrent-ruby (1.3.4)
-    connection_pool (3.0.1)
+    connection_pool (2.5.5)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -457,7 +475,7 @@ GEM
     geom2d (0.4.1)
     globalid (1.3.0)
       activesupport (>= 6.1)
-    google-protobuf (4.33.1)
+    google-protobuf (4.33.2)
       bigdecimal
       rake (>= 13)
     graphql (2.4.17)
@@ -721,7 +739,7 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.6.1)
     redis (4.8.1)
-    redis-client (0.26.1)
+    redis-client (0.26.2)
       connection_pool
     regexp_parser (2.11.3)
     reline (0.6.3)
@@ -808,13 +826,13 @@ GEM
       nokogiri (>= 1.10.8)
       rubyzip (>= 1.3.0)
     rubyzip (2.3.2)
-    sass-embedded (1.94.2)
+    sass-embedded (1.95.0)
       google-protobuf (~> 4.31)
       rake (>= 13)
     sassc (2.4.0)
       ffi (~> 1.9)
     securerandom (0.4.1)
-    selenium-webdriver (4.38.0)
+    selenium-webdriver (4.39.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -868,7 +886,7 @@ GEM
       unicode-display_width (>= 1.1.1, < 4)
     thor (1.4.0)
     tilt (2.6.1)
-    timeout (0.4.4)
+    timeout (0.5.0)
     trailblazer-option (0.1.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -920,6 +938,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-nulldb-adapter (~> 1.2)
   aws-sdk-s3
   bootsnap (~> 1.3)
   brakeman
@@ -927,16 +946,10 @@ DEPENDENCIES
   decidim!
   decidim-decidim_awesome!
   decidim-dev!
+  decidim-pokecode!
   decidim-term_customizer!
-  deface
-  health_check
   letter_opener_web
   puma (>= 6.3.1)
-  rails_semantic_logger
-  sentry-rails
-  sentry-ruby
-  sidekiq
-  sidekiq-cron
   web-console
 
 RUBY VERSION

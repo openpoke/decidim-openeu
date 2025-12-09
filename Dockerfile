@@ -3,9 +3,7 @@ FROM ruby:3.3 AS builder
 RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
     mkdir -p /etc/apt/keyrings && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y nodejs yarn \
+    apt-get update && apt-get install -y nodejs \
     build-essential \
     postgresql-client \
     p7zip \
@@ -27,6 +25,7 @@ COPY ./packages /app/packages
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config --deployment --local without 'development test' && \
     bundle install -j4 --retry 3 && \
+    npm install yarn -g && \
     # Remove unneeded gems
     bundle clean --force && \
     # Remove unneeded files from installed gems (cache, *.o, *.c)
@@ -74,7 +73,7 @@ RUN RAILS_ENV=production \
 RUN mv config/credentials.yml.enc.bak config/credentials.yml.enc 2>/dev/null || true
 RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 
-RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
+RUN rm -rf node_modules packages/*/node_modules tmp/cache vendor/bundle test spec app/packs .git
 
 # This image is for production env only
 FROM ruby:3.3-slim AS final
@@ -88,9 +87,6 @@ RUN apt-get update && \
     apt-get clean
 
 EXPOSE 3000
-
-ARG CAPROVER_GIT_COMMIT_SHA=${CAPROVER_GIT_COMMIT_SHA}
-ENV APP_REVISION=${CAPROVER_GIT_COMMIT_SHA}
 
 ENV RAILS_LOG_TO_STDOUT=true
 ENV RAILS_SERVE_STATIC_FILES=true

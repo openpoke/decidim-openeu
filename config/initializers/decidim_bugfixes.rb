@@ -3,14 +3,6 @@
 # NOTE: remove this when fix merged
 
 Rails.application.config.to_prepare do
-  Decidim::ParticipatoryProcesses::ParticipatoryProcessesController.class_eval do
-    private
-
-    def search_collection
-      published_processes.query.includes(:area)
-    end
-  end
-
   Decidim::Debates::DebateCardMetadataCell.class_eval do
     def debate_items
       [label, duration, comments_count_item, endorsements_count_item] + taxonomy_items + [coauthors_item]
