@@ -3,9 +3,7 @@ FROM ruby:3.3 AS builder
 RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
     mkdir -p /etc/apt/keyrings && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y nodejs yarn \
+    apt-get update && apt-get install -y nodejs \
     build-essential \
     postgresql-client \
     p7zip \
@@ -40,6 +38,7 @@ RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xa
     find /usr/local/bundle/ -wholename "*/decidim-dev/lib/decidim/dev/assets/*" -exec rm -rf {} +
 
 RUN npm ci
+RUN "bundle exec rake decidim_api:generate_docs"
 
 # copy the rest of files
 COPY ./app /app/app
@@ -88,9 +87,6 @@ RUN apt-get update && \
     apt-get clean
 
 EXPOSE 3000
-
-ARG CAPROVER_GIT_COMMIT_SHA=${CAPROVER_GIT_COMMIT_SHA}
-ENV APP_REVISION=${CAPROVER_GIT_COMMIT_SHA}
 
 ENV RAILS_LOG_TO_STDOUT=true
 ENV RAILS_SERVE_STATIC_FILES=true
