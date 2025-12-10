@@ -195,7 +195,7 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-pokecode.git
-  revision: 13e01b4603ae877413adf2e0ab7af9a7e4a25a8d
+  revision: 506dc4cda9420cb97a3cec7243896cab4fa2f552
   branch: main
   specs:
     decidim-pokecode (0.1.0)
@@ -819,7 +819,7 @@ GEM
     rubocop-rubycw (0.1.6)
       rubocop (~> 1.0)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.5)
+    ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
     rubyXL (3.4.33)
