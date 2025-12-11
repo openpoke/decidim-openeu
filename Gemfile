@@ -26,5 +26,3 @@ group :development do
   gem "letter_opener_web"
   gem "web-console"
 end
-
-gem "activerecord-nulldb-adapter", "~> 1.2"
