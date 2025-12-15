@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
   revision: f3c442c531459e8458af7ed52bcd75bf1235b23b
-  branch: main
+  branch: release/0.30-stable
   specs:
     decidim-decidim_awesome (0.13.2)
       active_hashcash (~> 0.4.0)
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 0d0a313b473aca0d328d2f111be21729d42515fc
+  revision: 75d67e4032fbc8099a004410bb5be07084792210
   branch: release/0.30-stable
   specs:
     decidim (0.30.4)
@@ -195,10 +195,11 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-pokecode.git
-  revision: 0aee34971c8f46b8176d5149a09b5211f7906eb0
+  revision: 17e9a072cf35d1624bb34f2b736fba29ce1b2606
   branch: main
   specs:
     decidim-pokecode (0.1.0)
+      aws-sdk-s3
       decidim-core (>= 0.30.0, < 0.31)
       deface (>= 1.5)
       health_check
@@ -279,8 +280,6 @@ GEM
     activerecord (7.0.10)
       activemodel (= 7.0.10)
       activesupport (= 7.0.10)
-    activerecord-nulldb-adapter (1.2.2)
-      activerecord (>= 6.1, < 8.2)
     activestorage (7.0.10)
       actionpack (= 7.0.10)
       activejob (= 7.0.10)
@@ -307,7 +306,7 @@ GEM
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1191.0)
+    aws-partitions (1.1192.0)
     aws-sdk-core (3.239.2)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -326,7 +325,7 @@ GEM
     aws-sigv4 (1.12.1)
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
-    batch-loader (2.0.5)
+    batch-loader (2.0.6)
     bcrypt (3.1.20)
     benchmark (0.5.0)
     better_html (2.2.0)
@@ -386,7 +385,7 @@ GEM
     css_parser (1.21.1)
       addressable
     csv (3.3.5)
-    date (3.5.0)
+    date (3.5.1)
     date_validator (0.12.0)
       activemodel (>= 3)
       activesupport (>= 3)
@@ -534,7 +533,7 @@ GEM
       rails (>= 3.2.0)
     io-console (0.8.1)
     jmespath (1.6.2)
-    json (2.17.1)
+    json (2.18.0)
     jwt (3.1.2)
       base64
     kaminari (1.2.2)
@@ -635,8 +634,8 @@ GEM
       oauth
       omniauth (>= 1.0, < 3)
       rack (>= 1.6.2, < 4)
-    omniauth-oauth2 (1.8.0)
-      oauth2 (>= 1.4, < 3)
+    omniauth-oauth2 (1.9.0)
+      oauth2 (>= 2.0.2, < 3)
       omniauth (~> 2.0)
     omniauth-rails_csrf_protection (1.0.2)
       actionpack (>= 4.2)
@@ -717,7 +716,7 @@ GEM
     rails-i18n (7.0.10)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
-    rails_semantic_logger (4.18.0)
+    rails_semantic_logger (4.19.0)
       rack
       railties (>= 5.1)
       semantic_logger (~> 4.16)
@@ -819,14 +818,14 @@ GEM
     rubocop-rubycw (0.1.6)
       rubocop (~> 1.0)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.5)
+    ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
     rubyXL (3.4.33)
       nokogiri (>= 1.10.8)
       rubyzip (>= 1.3.0)
     rubyzip (2.3.2)
-    sass-embedded (1.95.0)
+    sass-embedded (1.96.0)
       google-protobuf (~> 4.31)
       rake (>= 13)
     sassc (2.4.0)
@@ -852,12 +851,12 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
-    sidekiq (7.3.9)
+    sidekiq (7.3.10)
       base64
-      connection_pool (>= 2.3.0)
+      connection_pool (>= 2.3.0, < 3)
       logger
-      rack (>= 2.2.4)
-      redis-client (>= 0.22.2)
+      rack (>= 2.2.4, < 3.3)
+      redis-client (>= 0.23.0, < 1)
     sidekiq-cron (2.3.1)
       cronex (>= 0.13.0)
       fugit (~> 1.8, >= 1.11.1)
@@ -938,7 +937,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-nulldb-adapter (~> 1.2)
   aws-sdk-s3
   bootsnap (~> 1.3)
   brakeman
@@ -953,7 +951,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.3.10p183
+  ruby 3.3.10p183
 
 BUNDLED WITH
   4.0.0
