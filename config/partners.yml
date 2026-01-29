@@ -29,6 +29,9 @@ members:
   - name: "Veliko Tarnovo"
     url: "https://www.uni-vt.bg/eng/"
     image: "partners/vtu.png"
+  - name: "Università Telematica Internazionale UNINETTUNO"
+    url: "https://www.uninettuno.it/"
+    image: "partners/uninettuno.png"
 
 associated_partners:
   - name: "European Association of Distance Teaching Universities"
