@@ -1,0 +1,9 @@
+<!-- insert_after ".main-footer__down" -->
+
+<div class="flex flex-col gap-4 md:flex-row justify-center items-center px-4">
+  <a rel="decidim noopener noreferrer" href="https://openeu.eu/" target="_blank" data-external-link="text-only">
+    <%= image_tag("eu_cofunded.png", alt: t("layouts.decidim.footer.eu_logo"), class: "max-h-16 w-full block") %>
+  </a>
+  <div>
+  <p class="text-xs text-white prose"><%= t("layouts.decidim.footer.eu_description") %></p>
+</div>

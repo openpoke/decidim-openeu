@@ -16,6 +16,12 @@ checksums = [
       "/app/views/decidim/meetings/meetings/_meeting.html.erb" => "38346a6eb237727f469d96aaa64f7503",
       "/app/permissions/decidim/meetings/admin/permissions.rb" => "62f49175e6cefbf906f831caef5fc0dd"
     }
+  },
+  {
+    package: "decidim-core",
+    files: {
+      "/app/views/layouts/decidim/footer/_main.html.erb" => "2d3ecb9824c197951ef8fd7a77bed7d0"
+    }
   }
 ]
 
