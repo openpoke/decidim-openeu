@@ -37,6 +37,7 @@
 .env
 .envrc
 .rbenv-vars
+mise.toml
 
 # Others
 .vscode
@@ -55,6 +56,7 @@ backups/*
 /public/packs-test
 /public/sw.js*
 /public/sw.js.map*
+/app/views/static/api
 
 # Ignore node modules
 /node_modules
@@ -64,6 +66,4 @@ npm_debug.log
 # Ignore Tailwind configuration
 tailwind.config.js
 .rspec-failures
-
-/app/static/api/docs
 
