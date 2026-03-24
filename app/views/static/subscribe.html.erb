@@ -1,0 +1,169 @@
+<% add_decidim_meta_tags({
+  description: t(".meta_tags.newsletter_description"),
+  title: t(".meta_tags.newsletter_title")
+}) %>
+
+<main class="layout-1col cols-8">
+  <div class="text-center py-10">
+    <h1 class="title-decorator inline-block text-left mb-12"><%= t(".heading") %></h1>
+    <p class="text-lg text-gray-2"><%= t(".intro_text") %></p>
+  </div>
+
+  <section>
+ <div id="mc_embed_shell">
+  <div id="mc_embed_signup">
+    <form
+      action="https://uni-vt.us11.list-manage.com/subscribe/post?u=ba0d669ccbecc37a636972345&amp;id=0fb53470f4&amp;v_id=61&amp;f_id=00ddc0e1f0"
+      method="post"
+      id="mc-embedded-subscribe-form"
+      name="mc-embedded-subscribe-form"
+      class="validate form answer-questionnaire"
+      onsubmit="setTimeout(function(){ window.location.href='https://blogs.uned.es/openeu/subscribing/'; }, 300);"
+    >
+      <div id="mc_embed_signup_scroll" class="flex flex-col gap-6">
+        <div class="indicates-required " style="text-align:left;">
+          <span class="asterisk">*</span>
+          indicates required
+        </div>
+
+        <div class="mc-field-group">
+          <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+          <input type="email" name="EMAIL" class="required email w-full" id="mce-EMAIL" required value="">
+        </div>
+
+        <div class="mc-field-group">
+          <label for="mce-FNAME">First Name <span class="asterisk">*</span></label>
+          <input type="text" name="FNAME" class="required text w-full" id="mce-FNAME" required value="">
+        </div>
+
+        <div class="mc-field-group">
+          <label for="mce-LNAME">Last Name <span class="asterisk">*</span></label>
+          <input type="text" name="LNAME" class="required text w-full" id="mce-LNAME" required value="">
+        </div>
+
+        <div class="mc-field-group input-group">
+          <p class="mb-4"><strong>Topics</strong></p>
+          <ul>
+            <li>
+              <input type="checkbox" name="group[70][1]" id="mce-group70-0" value="">
+              <label for="mce-group70-0">General OpenEU</label>
+            </li>
+            <li>
+              <input type="checkbox" name="group[70][2]" id="mce-group70-1" value="">
+              <label for="mce-group70-1">Volunteering</label>
+            </li>
+            <li>
+              <input type="checkbox" name="group[70][4]" id="mce-group70-2" value="">
+              <label for="mce-group70-2">News</label>
+            </li>
+            <li>
+              <input type="checkbox" name="group[70][8]" id="mce-group70-3" value="">
+              <label for="mce-group70-3">Research</label>
+            </li>
+            <li>
+              <input type="checkbox" name="group[70][16]" id="mce-group70-4" value="">
+              <label for="mce-group70-4">Education</label>
+            </li>
+            <li>
+              <input type="checkbox" name="group[70][32]" id="mce-group70-5" value="">
+              <label for="mce-group70-5">Events</label>
+            </li>
+            <li>
+              <input type="checkbox" name="group[70][64]" id="mce-group70-6" value="">
+              <label for="mce-group70-6">Policy &amp; Advocacy</label>
+            </li>
+            <li>
+              <input type="checkbox" name="group[70][128]" id="mce-group70-7" value="">
+              <label for="mce-group70-7">Opportunities</label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mc-field-group">
+          <label for="mce-MMERGE3">Audience <span class="asterisk">*</span></label>
+          <select name="MMERGE3" class="required" id="mce-MMERGE3" required>
+            <option value="">Please select</option>
+            <option value="Alliance member">Alliance member</option>
+            <option value="External stakeholder">External stakeholder</option>
+            <option value="Student">Student</option>
+            <option value="Staff">Staff</option>
+          </select>
+        </div>
+
+        <div id="mergeRow-gdpr" class="mergeRow gdpr-mergeRow content__gdprBlock mc-field-group">
+          <div class="content__gdpr [&_a]:underline [&_a:hover]:font-semibold">
+            <label class="text-lg font-semibold">GDPR</label>
+
+            <p class="text-md mb-4">
+              <a href="https://blogs.uned.es/openeu/terms-of-service/" target="_blank" rel="noopener noreferrer">Terms of Service</a><br>
+              <a href="https://www.uoc.edu/portal/en/_peu/avis_legal/politica-privacitat/index.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            </p>
+
+            <fieldset class="mc_fieldset gdprRequired mc-field-group" name="interestgroup_field">
+              <label class="checkbox subfield" for="gdpr_238">
+                <input type="checkbox" id="gdpr_238" name="gdpr[238]" class="gdpr" value="Y" required>
+                <span><span class="asterisk">*</span>
+                  I have read and accept the
+                  <a href="https://blogs.uned.es/openeu/terms-of-service/" target="_blank" rel="noopener noreferrer">Terms of Service</a>.
+                </span>
+              </label>
+            </fieldset>
+
+            <p>
+              You can unsubscribe at any time by clicking the link in the footer of our emails.
+              For information about our privacy practices, please visit our
+              <a href="https://www.uoc.edu/portal/en/_peu/avis_legal/politica-privacitat/index.html" target="_blank" rel="noopener noreferrer">website</a>.
+            </p>
+          </div>
+
+          <div class="content__gdprLegal">
+            <p>
+              We use Mailchimp as our marketing platform. By clicking below to subscribe, you acknowledge that your information will be transferred to Mailchimp for processing.
+              <a href="https://mailchimp.com/legal/terms" target="_blank" rel="noopener noreferrer">Learn more</a>
+              about Mailchimp's privacy practices.
+            </p>
+          </div>
+        </div>
+
+        <div hidden="">
+          <input type="hidden" name="tags" value="81444">
+        </div>
+
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none;"></div>
+          <div class="response" id="mce-success-response" style="display:none;"></div>
+        </div>
+
+        <div aria-hidden="true" style="position:absolute; left:-5000px;">
+          <input type="text" name="b_ba0d669ccbecc37a636972345_0fb53470f4" tabindex="-1" value="">
+        </div>
+
+        <div class="clear">
+          <input
+            type="submit"
+            name="subscribe"
+            id="mc-embedded-subscribe"
+            class="button button__primary button__sm"
+            value="Subscribe">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+  <script>
+    (function($) {
+      window.fnames = new Array();
+      window.ftypes = new Array();
+      fnames[0] = 'EMAIL'; ftypes[0] = 'email';
+      fnames[1] = 'FNAME'; ftypes[1] = 'text';
+      fnames[2] = 'LNAME'; ftypes[2] = 'text';
+      fnames[3] = 'MMERGE3'; ftypes[3] = 'dropdown';
+    }(jQuery));
+    var $mcj = jQuery.noConflict(true);
+  </script>
+</div>
+
+
+  </section>
+</main>

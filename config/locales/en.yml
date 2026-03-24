@@ -26,17 +26,28 @@ en:
         associated_partners: Associated partners
         members: Members
         name: Partner logos
+  layouts:
+    decidim:
+      footer:
+        cookies_policy: Cookies policy
+        eu_description: |
+          Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not
+          necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA).
+          Neither the European Union nor EACEA can be held responsible for them.
+        eu_logo: European Union logo
   openeu:
     verifications:
       admins_only: This verification method is issued only by administrators. Please
         contact an administrator if you believe you should have access.
       non_admin: Only administrators can authorize users.
-  layouts:
-    decidim:
-      footer:
-        cookies_policy: Cookies policy
-        eu_logo: European Union logo
-        eu_description: | 
-          Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not
-          necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA).
-          Neither the European Union nor EACEA can be held responsible for them.
+  static:
+    subscribe:
+      heading: Subscribe to our Newsletter
+      intro_text: Stay informed about the latest news and events by subscribing to
+        our newsletter.
+      menu:
+        subscribe: Subscription
+      meta_tags:
+        newsletter_description: Subscribe to our newsletter to stay updated on the
+          latest news and events.
+        newsletter_title: Subscribe to our Newsletter

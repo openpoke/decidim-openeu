@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   mount Decidim::Core::Engine => "/"
+
+  # create a route for the subscribe page
+  get "/subscribe", to: "static#subscribe", as: :subscribe_static
 end

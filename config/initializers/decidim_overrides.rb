@@ -22,3 +22,11 @@ Rails.application.config.to_prepare do
   # rubocop:enable Metrics/CyclomaticComplexity
   Decidim::Component.include(Decidim::Followable)
 end
+
+Decidim.menu :menu do |menu|
+  menu.add_item :subscribe,
+                I18n.t("menu.subscribe", scope: "static.subscribe"),
+                Rails.application.routes.url_helpers.subscribe_static_path,
+                position: 20,
+                active: :exclusive
+end
