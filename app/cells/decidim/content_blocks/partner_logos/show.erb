@@ -6,8 +6,8 @@
     <% load_partners['members'].each do |partner| %>
       <div class="flex items-center justify-center h-full p-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
         <%= link_to partner['url'], target: '_blank', class: "flex items-center justify-center w-full h-full" do %>
-          <%= image_tag partner['image'], 
-            alt: partner['name'], 
+          <%= image_tag partner['image'],
+            alt: partner['name'],
             loading: 'lazy',
             :class => "object-contain max-h-24 w-full grayscale" %>
         <% end %>
@@ -22,8 +22,8 @@
     <% load_partners['associated_partners'].each do |partner| %>
       <div class="flex items-center justify-center h-full p-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
         <%= link_to partner['url'], target: '_blank', class: "flex items-center justify-center w-full h-full" do %>
-          <%= image_tag partner['image'], 
-              alt: partner['name'], 
+          <%= image_tag partner['image'],
+              alt: partner['name'],
               loading: 'lazy',
               class: "object-contain max-h-24 w-full grayscale" %>
         <% end %>

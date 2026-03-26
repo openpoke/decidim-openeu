@@ -4,4 +4,6 @@ class StaticController < Decidim::ApplicationController
   layout "layouts/decidim/application"
 
   def subscribe; end
+
+  def subscribed; end
 end

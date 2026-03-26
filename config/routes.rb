@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   # create a route for the subscribe page
   get "/subscribe", to: "static#subscribe", as: :subscribe_static
+  get "/subscribed", to: "static#subscribed", as: :subscribed_static
 end

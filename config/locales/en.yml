@@ -51,3 +51,11 @@ en:
         newsletter_description: Subscribe to our newsletter to stay updated on the
           latest news and events.
         newsletter_title: Subscribe to our Newsletter
+    subscribed:
+      heading: Subscription Successful
+      intro_text: Thank you for subscribing to our newsletter! You have successfully
+        joined the OpenEU mailing list.
+      meta_tags:
+        newsletter_description: Thank you for subscribing! You have successfully joined
+          the OpenEU mailing list.
+        newsletter_title: Subscription Successful
