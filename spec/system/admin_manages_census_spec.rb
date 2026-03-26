@@ -58,11 +58,12 @@ describe "Admin" do
           click_on "Import CSV", match: :first
           dynamically_attach_file(:census_data_file, Rails.root.join("lib/assets/valid_emails.csv"))
           click_on "Upload file"
-          visit decidim.root_path
-          find_by_id("trigger-dropdown-account").click
-          within ".dropdown.dropdown__bottom.main-bar__dropdown" do
+          visit decidim_admin.root_path
+          find_by_id("admin-dropdown-menu-login-trigger").click
+          within ".dropdown.dropdown__bottom" do
             click_on "Log out"
           end
+          visit decidim.root_path
         end
 
         context "when the email exists in the census" do
@@ -73,7 +74,7 @@ describe "Admin" do
               click_on "Log in"
             end
             fill_in "Email address", with: test_user.email
-            fill_in "Password", with: test_user.password
+            fill_in "Password", with: "decidim123456789"
             within ".form__wrapper-block" do
               click_on "Log in"
             end
@@ -93,7 +94,7 @@ describe "Admin" do
               click_on "Log in"
             end
             fill_in "Email address", with: another_user.email
-            fill_in "Password", with: another_user.password
+            fill_in "Password", with: "decidim123456789"
             within ".form__wrapper-block" do
               click_on "Log in"
             end
