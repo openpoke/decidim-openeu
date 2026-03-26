@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Visit a followable component" do # rubocop:disable RSpec/DescribeClass
+describe "Visit a followable component" do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :confirmed, organization:) }
   let!(:component) { create(:proposal_component, organization:) }

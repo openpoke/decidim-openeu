@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Admin manages meeting permissions" do # rubocop:disable RSpec/DescribeClass
+describe "Admin manages meeting permissions" do
   let(:manifest_name) { "meetings" }
   let!(:meeting) do
     create(:meeting,

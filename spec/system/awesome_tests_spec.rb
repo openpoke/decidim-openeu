@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Custom styles" do # rubocop:disable RSpec/DescribeClass
+describe "Custom styles" do
   let(:organization) { create(:organization) }
   let!(:participatory_process) { create(:participatory_process, organization:) }
   let!(:participatory_process_group) { create(:participatory_process_group, :with_participatory_processes, organization:) }

@@ -9,12 +9,12 @@ checksums = [
   {
     package: "decidim-meetings",
     files: {
-      "/app/controllers/decidim/meetings/meetings_controller.rb" => "deb84fa4e285297a6d3e0d60490a84eb",
-      "/app/commands/decidim/meetings/admin/create_meeting.rb" => "9c768e9b460fe04cae05ca6b3dee0fd8",
-      "/app/cells/decidim/meetings/dates_and_map_cell.rb" => "63d62a274af8f60b3fcbe27d99019ad3",
-      "/app/cells/decidim/meetings/dates_and_map/show.erb" => "43f0d53b01ab6775132856ca84c4d907",
-      "/app/views/decidim/meetings/meetings/_meeting.html.erb" => "38346a6eb237727f469d96aaa64f7503",
-      "/app/permissions/decidim/meetings/admin/permissions.rb" => "62f49175e6cefbf906f831caef5fc0dd"
+      "/app/controllers/decidim/meetings/meetings_controller.rb" => "da1a19e72fc0692c259671b9fdc8dc8b",
+      "/app/commands/decidim/meetings/admin/create_meeting.rb" => "970faa493b3086a0feca886de3b45061",
+      "/app/cells/decidim/meetings/dates_and_map_cell.rb" => "7f5aa4ad0f98304dafaf2a719fa146ba",
+      "/app/cells/decidim/meetings/dates_and_map/show.erb" => "ae848e2178f6f14f718fea92e75d3635",
+      "/app/views/decidim/meetings/meetings/_meeting.html.erb" => "ed7310e5cc494445b2b0f7c08affcdd7",
+      "/app/permissions/decidim/meetings/admin/permissions.rb" => "739520978c011ee0eb6896166575452b"
     }
   },
   {

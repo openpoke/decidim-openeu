@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Visit the home page", perform_enqueued: true do # rubocop:disable RSpec/DescribeClass
+describe "Visit the home page", perform_enqueued: true do
   let(:organization) { create(:organization) }
   let!(:content_block) do
     create(:content_block, organization:, scope_name: :homepage, manifest_name: :partner_logos)

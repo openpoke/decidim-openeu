@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "User verification" do # rubocop:disable RSpec/DescribeClass
+describe "User verification" do
   let(:organization) { create(:organization, available_authorizations: [:wp_authorization_handler]) }
   let!(:awesome_config) { create(:awesome_config, organization:, var: :admins_available_authorizations, value: [:wp_authorization_handler]) }
   let(:user) { create(:user, :confirmed, organization:) }

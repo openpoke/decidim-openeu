@@ -40,11 +40,13 @@ describe "Admin" do
       it "displays a successful message" do
         expect(page).to have_content("Current census data")
         expect(page).to have_content("There are no census data.")
+        click_on "Import CSV", match: :first
         expect(page).to have_content("Upload file")
       end
 
       it "imports a csv file" do
-        attach_file "File", Rails.root.join("lib/assets/valid_emails.csv")
+        click_on "Import CSV", match: :first
+        dynamically_attach_file(:census_data_file, Rails.root.join("lib/assets/valid_emails.csv"))
         expect(page).to have_content("Upload file")
         click_on "Upload file"
 
@@ -53,7 +55,8 @@ describe "Admin" do
 
       context "when user logs in" do
         before do
-          attach_file "File", Rails.root.join("lib/assets/valid_emails.csv")
+          click_on "Import CSV", match: :first
+          dynamically_attach_file(:census_data_file, Rails.root.join("lib/assets/valid_emails.csv"))
           click_on "Upload file"
           visit decidim.root_path
           find_by_id("trigger-dropdown-account").click
