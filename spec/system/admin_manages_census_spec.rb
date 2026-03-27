@@ -7,7 +7,7 @@ describe "Admin" do
     let!(:organization) { create(:organization, available_authorizations:) }
     let!(:admin) { create(:user, :admin, :confirmed, organization:) }
     let(:available_authorizations) { %w(id_documents postal_letter csv_census dummy_authorization_handler another_dummy_authorization_handler sms) }
-    let(:test_user) { create(:user, :confirmed, email: "user@example.org", password: "decidim123456789", organization:) }
+    let(:test_user) { create(:user, :confirmed, email: "user@example.org", organization:) }
 
     before do
       switch_to_host(organization.host)
@@ -86,7 +86,7 @@ describe "Admin" do
         end
 
         context "when the email does not exist in the census" do
-          let(:another_user) { create(:user, :confirmed, email: "email_not_registered@example.org", password: "decidim123456789", organization:) }
+          let(:another_user) { create(:user, :confirmed, email: "email_not_registered@example.org", organization:) }
           let(:last_authorization) { Decidim::Authorization.last }
 
           it "does not authorize the user" do
@@ -98,6 +98,7 @@ describe "Admin" do
             within ".form__wrapper-block" do
               click_on "Log in"
             end
+            visit decidim.root_path
 
             expect(last_authorization).to be_nil
             expect(page).to have_content("Logged in successfully.")
