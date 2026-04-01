@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 362ca4cd1109a4144c7b964f9afcd5ad64bdd8a1
-  branch: main
+  revision: bab6cc0780c2f49b560296b200d4519daa8535da
+  branch: redirect/allow_other_host
   specs:
     decidim-decidim_awesome (0.14.1)
       active_hashcash (~> 0.4.0)
