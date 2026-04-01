@@ -6,6 +6,7 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.31-backports" }.freeze
 gem "decidim", DECIDIM_VERSION
+gem "decidim-collaborative_texts", DECIDIM_VERSION
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "redirect/allow_other_host"
 gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
@@ -24,3 +25,6 @@ group :development do
   gem "letter_opener_web"
   gem "web-console"
 end
+
+
+gem "decidim-elections", "~> 0.31.3"

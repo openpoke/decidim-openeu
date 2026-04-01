@@ -84,6 +84,8 @@ GIT
     decidim-budgets (0.31.3)
       decidim-comments (= 0.31.3)
       decidim-core (= 0.31.3)
+    decidim-collaborative_texts (0.31.3)
+      decidim-core (= 0.31.3)
     decidim-comments (0.31.3)
       decidim-core (= 0.31.3)
       redcarpet (~> 3.5, >= 3.5.1)
@@ -397,6 +399,10 @@ GEM
     date_validator (0.12.0)
       activemodel (>= 3)
       activesupport (>= 3)
+    decidim-elections (0.31.3)
+      decidim-admin (= 0.31.3)
+      decidim-core (= 0.31.3)
+      decidim-forms (= 0.31.3)
     declarative-builder (0.2.0)
       trailblazer-option (~> 0.1.0)
     declarative-option (0.1.0)
@@ -1072,8 +1078,10 @@ DEPENDENCIES
   brakeman
   byebug (~> 11.0)
   decidim!
+  decidim-collaborative_texts!
   decidim-decidim_awesome!
   decidim-dev!
+  decidim-elections (~> 0.31.3)
   decidim-pokecode!
   decidim-term_customizer!
   letter_opener_web
@@ -1144,11 +1152,13 @@ CHECKSUMS
   decidim-assemblies (0.31.3)
   decidim-blogs (0.31.3)
   decidim-budgets (0.31.3)
+  decidim-collaborative_texts (0.31.3)
   decidim-comments (0.31.3)
   decidim-core (0.31.3)
   decidim-debates (0.31.3)
   decidim-decidim_awesome (0.14.1)
   decidim-dev (0.31.3)
+  decidim-elections (0.31.3) sha256=7a37a936449fd1611fe3175af2c769ca8e19b89f754e65e508524110b58b3f57
   decidim-forms (0.31.3)
   decidim-generators (0.31.3)
   decidim-meetings (0.31.3)
