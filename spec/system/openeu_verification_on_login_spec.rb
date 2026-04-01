@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "User verification on login" do # rubocop:disable RSpec/DescribeClass
+describe "User verification on login" do
   let(:organization) { create(:organization, available_authorizations: [:wp_authorization_handler, :csv_census]) }
   let(:user) { create(:user, :confirmed, organization:) }
 
@@ -43,7 +43,7 @@ describe "User verification on login" do # rubocop:disable RSpec/DescribeClass
     fill_in "Password", with: "decidim123456789"
     check "By signing up you agree to the terms of service."
     check "Receive an occasional newsletter with relevant information"
-    within "#register-form" do
+    within "#registration_new_user" do
       click_on "Create an account"
     end
     expect(Decidim::Authorization.count).to eq(2)
@@ -59,7 +59,7 @@ describe "User verification on login" do # rubocop:disable RSpec/DescribeClass
     fill_in "Password", with: "decidim123456789"
     check "By signing up you agree to the terms of service."
     check "Receive an occasional newsletter with relevant information"
-    within "#register-form" do
+    within "#registration_new_user" do
       click_on "Create an account"
     end
     expect(Decidim::Authorization.count).to eq(0)
@@ -72,7 +72,7 @@ describe "User verification on login" do # rubocop:disable RSpec/DescribeClass
     fill_in "Password", with: "password"
     check "By signing up you agree to the terms of service."
     check "Receive an occasional newsletter with relevant information"
-    within "#register-form" do
+    within "#registration_new_user" do
       click_on "Create an account"
     end
     expect(page).to have_content("There is an error in this field")

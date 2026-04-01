@@ -7,7 +7,7 @@ describe "Admin" do
     let!(:organization) { create(:organization, available_authorizations:) }
     let!(:admin) { create(:user, :admin, :confirmed, organization:) }
     let(:available_authorizations) { %w(id_documents postal_letter csv_census dummy_authorization_handler another_dummy_authorization_handler sms) }
-    let(:test_user) { create(:user, :confirmed, email: "user@example.org", password: "decidim123456789", organization:) }
+    let(:test_user) { create(:user, :confirmed, email: "user@example.org", organization:) }
 
     before do
       switch_to_host(organization.host)
@@ -40,11 +40,13 @@ describe "Admin" do
       it "displays a successful message" do
         expect(page).to have_content("Current census data")
         expect(page).to have_content("There are no census data.")
+        click_on "Import CSV", match: :first
         expect(page).to have_content("Upload file")
       end
 
       it "imports a csv file" do
-        attach_file "File", Rails.root.join("lib/assets/valid_emails.csv")
+        click_on "Import CSV", match: :first
+        dynamically_attach_file(:census_data_file, Rails.root.join("lib/assets/valid_emails.csv"))
         expect(page).to have_content("Upload file")
         click_on "Upload file"
 
@@ -53,13 +55,15 @@ describe "Admin" do
 
       context "when user logs in" do
         before do
-          attach_file "File", Rails.root.join("lib/assets/valid_emails.csv")
+          click_on "Import CSV", match: :first
+          dynamically_attach_file(:census_data_file, Rails.root.join("lib/assets/valid_emails.csv"))
           click_on "Upload file"
-          visit decidim.root_path
-          find_by_id("trigger-dropdown-account").click
-          within ".dropdown.dropdown__bottom.main-bar__dropdown" do
+          visit decidim_admin.root_path
+          find_by_id("admin-dropdown-menu-login-trigger").click
+          within ".dropdown.dropdown__bottom" do
             click_on "Log out"
           end
+          visit decidim.root_path
         end
 
         context "when the email exists in the census" do
@@ -70,7 +74,7 @@ describe "Admin" do
               click_on "Log in"
             end
             fill_in "Email address", with: test_user.email
-            fill_in "Password", with: test_user.password
+            fill_in "Password", with: "decidim123456789"
             within ".form__wrapper-block" do
               click_on "Log in"
             end
@@ -82,7 +86,7 @@ describe "Admin" do
         end
 
         context "when the email does not exist in the census" do
-          let(:another_user) { create(:user, :confirmed, email: "email_not_registered@example.org", password: "decidim123456789", organization:) }
+          let(:another_user) { create(:user, :confirmed, email: "email_not_registered@example.org", organization:) }
           let(:last_authorization) { Decidim::Authorization.last }
 
           it "does not authorize the user" do
@@ -90,10 +94,11 @@ describe "Admin" do
               click_on "Log in"
             end
             fill_in "Email address", with: another_user.email
-            fill_in "Password", with: another_user.password
+            fill_in "Password", with: "decidim123456789"
             within ".form__wrapper-block" do
               click_on "Log in"
             end
+            visit decidim.root_path
 
             expect(last_authorization).to be_nil
             expect(page).to have_content("Logged in successfully.")

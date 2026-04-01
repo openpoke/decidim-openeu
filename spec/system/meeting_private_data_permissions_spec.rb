@@ -3,7 +3,7 @@
 require "rails_helper"
 require_relative "shared/meeting_permissions_examples"
 
-describe "Meeting private data permissions" do # rubocop:disable RSpec/DescribeClass
+describe "Meeting private data permissions" do
   include_context "with a component"
   let(:manifest_name) { "meetings" }
   let(:organization) { create(:organization, available_authorizations: ["csv_census"]) }

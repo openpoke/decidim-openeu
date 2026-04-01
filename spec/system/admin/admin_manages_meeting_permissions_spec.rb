@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Admin manages meeting permissions" do # rubocop:disable RSpec/DescribeClass
+describe "Admin manages meeting permissions" do
   let(:manifest_name) { "meetings" }
   let!(:meeting) do
     create(:meeting,
@@ -26,7 +26,8 @@ describe "Admin manages meeting permissions" do # rubocop:disable RSpec/Describe
     expect(page).to have_content(translated_attribute(meeting.title))
 
     within "tr[data-id='#{meeting.id}']" do
-      find("a.action-icon--permissions").click
+      find("button[data-controller='dropdown']").click
+      click_on "Manage permissions"
     end
 
     expect(page).to have_css(".view_private_data-permission")
@@ -63,7 +64,8 @@ describe "Admin manages meeting permissions" do # rubocop:disable RSpec/Describe
       visit current_path
 
       within "tr[data-id='#{meeting.id}']" do
-        expect(page).to have_css(".action-icon--permissions.action-icon--highlighted")
+        find("button[data-controller='dropdown']").click
+        expect(page).to have_css(".dropdown__button")
       end
     end
 
@@ -71,7 +73,8 @@ describe "Admin manages meeting permissions" do # rubocop:disable RSpec/Describe
       visit current_path
 
       within "tr[data-id='#{meeting.id}']" do
-        find("a.action-icon--permissions").click
+        find("button[data-controller='dropdown']").click
+        click_on "Manage permissions"
       end
 
       within ".view_private_data-permission" do
@@ -83,7 +86,8 @@ describe "Admin manages meeting permissions" do # rubocop:disable RSpec/Describe
       visit current_path
 
       within "tr[data-id='#{meeting.id}']" do
-        find("a.action-icon--permissions").click
+        find("button[data-controller='dropdown']").click
+        click_on "Manage permissions"
       end
 
       within ".view_private_data-permission" do
@@ -194,8 +198,10 @@ describe "Admin manages meeting permissions" do # rubocop:disable RSpec/Describe
       expect(page).to have_content(translated_attribute(user_meeting.title))
 
       within "tr[data-id='#{user_meeting.id}']" do
-        find("a.action-icon--attachment_collections").click
+        find("button[data-controller='dropdown']").click
+        click_on "Add folder"
       end
+
       expect(page).to have_link("New attachment folder")
       click_on "New attachment folder"
       fill_in_i18n(:attachment_collection_name, "#attachment_collection-name-tabs", en: "My folder")

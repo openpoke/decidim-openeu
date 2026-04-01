@@ -27,4 +27,4 @@ jobs:
       - name: Upgrade instance dependencies
         uses: openpoke/decidim-shared-actions/upgrade_instance@main
         with:
-          ruby-version: "3.3"
+          ruby-version: "3.3.10"
