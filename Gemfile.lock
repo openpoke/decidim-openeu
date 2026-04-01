@@ -189,6 +189,10 @@ GIT
       w3c_rspec_validators (~> 0.3.0)
       webmock (~> 3.18)
       wisper-rspec (~> 1.0)
+    decidim-elections (0.31.3)
+      decidim-admin (= 0.31.3)
+      decidim-core (= 0.31.3)
+      decidim-forms (= 0.31.3)
     decidim-forms (0.31.3)
       decidim-core (= 0.31.3)
     decidim-generators (0.31.3)
@@ -399,10 +403,6 @@ GEM
     date_validator (0.12.0)
       activemodel (>= 3)
       activesupport (>= 3)
-    decidim-elections (0.31.3)
-      decidim-admin (= 0.31.3)
-      decidim-core (= 0.31.3)
-      decidim-forms (= 0.31.3)
     declarative-builder (0.2.0)
       trailblazer-option (~> 0.1.0)
     declarative-option (0.1.0)
@@ -1081,7 +1081,7 @@ DEPENDENCIES
   decidim-collaborative_texts!
   decidim-decidim_awesome!
   decidim-dev!
-  decidim-elections (~> 0.31.3)
+  decidim-elections!
   decidim-pokecode!
   decidim-term_customizer!
   letter_opener_web
@@ -1158,7 +1158,7 @@ CHECKSUMS
   decidim-debates (0.31.3)
   decidim-decidim_awesome (0.14.1)
   decidim-dev (0.31.3)
-  decidim-elections (0.31.3) sha256=7a37a936449fd1611fe3175af2c769ca8e19b89f754e65e508524110b58b3f57
+  decidim-elections (0.31.3)
   decidim-forms (0.31.3)
   decidim-generators (0.31.3)
   decidim-meetings (0.31.3)
