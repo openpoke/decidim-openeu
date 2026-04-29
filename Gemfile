@@ -8,7 +8,7 @@ DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.31-backports" }.freez
 gem "decidim", DECIDIM_VERSION
 gem "decidim-collaborative_texts", DECIDIM_VERSION
 gem "decidim-elections", DECIDIM_VERSION
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "redirect/allow_other_host"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
 gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
