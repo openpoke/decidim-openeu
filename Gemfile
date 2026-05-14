@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.31-backports" }.freeze
+DECIDIM_VERSION = { github: "openpoke/decidim", ref: "4405ca096fc21bdfedd9322d0183dfe88082107e" }.freeze
 gem "decidim", DECIDIM_VERSION
 gem "decidim-collaborative_texts", DECIDIM_VERSION
 gem "decidim-elections", DECIDIM_VERSION
