@@ -43,8 +43,10 @@ en:
   static:
     subscribe:
       heading: Subscribe to our Newsletter
-      intro_text: Stay informed about the latest news and events by subscribing to
-        our newsletter.
+      intro_text: Join the OpenEU community and stay connected with the latest opportunities,
+        initiatives and collaborations shaping the future of open and digital higher
+        education in Europe. Subscribe to receive updates on mobility programmes,
+        lifelong learning, research, events and activities across the OpenEU alliance.
       menu:
         subscribe: Subscription
       meta_tags:
