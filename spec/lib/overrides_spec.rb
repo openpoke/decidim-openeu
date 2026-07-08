@@ -7,9 +7,15 @@ require "rails_helper"
 # file should be updated to match any change/bug fix introduced in the core
 checksums = [
   {
+    package: "decidim-admin",
+    files: {
+      "/app/cells/decidim/admin/content_block/show.erb" => "adaab4b21c0d2480d52e15c7098f533e"
+    }
+  },
+  {
     package: "decidim-meetings",
     files: {
-      "/app/controllers/decidim/meetings/meetings_controller.rb" => "da1a19e72fc0692c259671b9fdc8dc8b",
+      "/app/controllers/decidim/meetings/meetings_controller.rb" => "f4adb5da69ac4cb04ac5b5838f7a70fe",
       "/app/commands/decidim/meetings/admin/create_meeting.rb" => "970faa493b3086a0feca886de3b45061",
       "/app/cells/decidim/meetings/dates_and_map_cell.rb" => "7f5aa4ad0f98304dafaf2a719fa146ba",
       "/app/cells/decidim/meetings/dates_and_map/show.erb" => "ae848e2178f6f14f718fea92e75d3635",
