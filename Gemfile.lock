@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 95dacdbde9da2d8ccfcc189bb38e21289a05cbd7
+  revision: d6edf5b00ce7017325e6ef236b01e63145999b25
   branch: feature/create_follow_up_messages
   specs:
     decidim-decidim_awesome (0.14.4)
