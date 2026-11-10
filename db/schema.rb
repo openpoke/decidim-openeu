@@ -417,6 +417,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_15_085554) do
   end
 
   create_table "decidim_awesome_follow_up_questionnaires", force: :cascade do |t|
+    t.bigint "decidim_organization_id", null: false
+    t.bigint "decidim_component_id", null: false
     t.bigint "decidim_questionnaire_id", null: false
     t.jsonb "name", default: {}, null: false
     t.integer "position", default: 0, null: false
@@ -427,6 +429,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_15_085554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active", "position"], name: "index_decidim_awesome_fuq_on_active_position"
+    t.index ["decidim_component_id"], name: "index_decidim_awesome_fuq_on_component_id"
+    t.index ["decidim_organization_id"], name: "index_decidim_awesome_fuq_on_organization_id"
     t.index ["decidim_questionnaire_id"], name: "index_decidim_awesome_fuq_on_questionnaire_id", unique: true
   end
 
@@ -2084,6 +2088,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_15_085554) do
   add_foreign_key "decidim_awesome_follow_up_questionnaire_messages", "decidim_awesome_follow_up_questionnaire_statuses", column: "status_id"
   add_foreign_key "decidim_awesome_follow_up_questionnaire_messages", "decidim_awesome_follow_up_questionnaires", column: "follow_up_questionnaire_id"
   add_foreign_key "decidim_awesome_follow_up_questionnaire_statuses", "decidim_awesome_follow_up_questionnaires", column: "follow_up_questionnaire_id"
+  add_foreign_key "decidim_awesome_follow_up_questionnaires", "decidim_components"
+  add_foreign_key "decidim_awesome_follow_up_questionnaires", "decidim_organizations"
   add_foreign_key "decidim_budgets_budgets", "decidim_scopes"
   add_foreign_key "decidim_budgets_orders", "decidim_budgets_budgets"
   add_foreign_key "decidim_budgets_projects", "decidim_budgets_budgets"
