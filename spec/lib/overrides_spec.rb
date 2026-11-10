@@ -26,7 +26,7 @@ checksums = [
   {
     package: "decidim-core",
     files: {
-      "/app/views/layouts/decidim/footer/_main.html.erb" => "2d3ecb9824c197951ef8fd7a77bed7d0"
+      "/app/views/layouts/decidim/footer/_main.html.erb" => "b23d96ceedeaac2e4635c6bb98d0d0c3"
     }
   }
 ]
