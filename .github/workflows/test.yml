@@ -13,7 +13,7 @@ env:
   DATABASE_PASSWORD: postgres
   DATABASE_HOST: localhost
   RUBYOPT: '-W:no-deprecated'
-  CHROME_VERSION: 126.0.6478.182
+  CHROME_VERSION: 155
   DISABLE_SPRING: 1
 
 jobs:
@@ -53,9 +53,10 @@ jobs:
       - name: Remove Chrome
         run: sudo apt remove google-chrome-stable
     
-      - uses: browser-actions/setup-chrome@v1
+      - uses: browser-actions/setup-chrome@v2
         with:
           chrome-version: ${{ env.CHROME_VERSION }}
+          install-chromedriver: true
 
       - uses: actions/setup-node@v4
         with:
