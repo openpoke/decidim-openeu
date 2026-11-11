@@ -19,6 +19,7 @@ describe "User verification on login" do
     within "#session_new_user" do
       click_on "Log in"
     end
+    expect(page).to have_content("Logged in successfully.")
     expect(Decidim::Authorization.count).to eq(2)
     authorization_names = Decidim::Authorization.pluck(:name)
     expect(authorization_names).to include("csv_census")
@@ -32,6 +33,7 @@ describe "User verification on login" do
     within "#session_new_user" do
       click_on "Log in"
     end
+    expect(page).to have_content("Logged in successfully.")
     expect(Decidim::Authorization.count).to eq(0)
   end
 
@@ -46,6 +48,7 @@ describe "User verification on login" do
     within "#registration_new_user" do
       click_on "Create an account"
     end
+    expect(page).to have_content("A message with a confirmation link has been sent")
     expect(Decidim::Authorization.count).to eq(2)
     authorization_names = Decidim::Authorization.pluck(:name)
     expect(authorization_names).to include("csv_census")
@@ -62,6 +65,7 @@ describe "User verification on login" do
     within "#registration_new_user" do
       click_on "Create an account"
     end
+    expect(page).to have_content("A message with a confirmation link has been sent")
     expect(Decidim::Authorization.count).to eq(0)
   end
 
